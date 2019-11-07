@@ -1,1 +1,1 @@
-'web: gunicorn orderchef.wsgi --log-file -' 
+web: gunicorn orderchef.wsgi --log-file
