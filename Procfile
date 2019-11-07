@@ -1,1 +1,1 @@
-web: gunicorn orderchef.wsgi
+web: gunicorn orderchef.wsgi --log-file
