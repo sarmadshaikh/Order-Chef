@@ -1,0 +1,31 @@
+<br/>
+<br/>
+<div style="height: 500px; width: 1000px; padding-left:200px">
+<div>
+  <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" >
+    <div ngxSlickItem *ngFor="let image of images" class="slide">
+      <img src="{{ image.img }}" width="500px" height="500px">
+    </div>
+  </ngx-slick-carousel>
+</div>
+
+<hr style="background-color:black" />
+</div>
+<br/>
+<br/>
+
+<table width="75%" style="padding-left: 16px;padding-top: 100px;">
+  <tr align="left" >
+    <td>
+        <img src="./../assets/imgs/Home2.jpg" alt="Smiley face" style="width:50%;height:25%;">
+    </td>
+    <td><p>right text.</p></td>
+</tr>
+    <tr>
+      <td><p>left text.</p></td>
+      <td align="right">
+        <img src="./../assets/imgs/Home3.jpg" alt="Smiley face" style="width:150%;height:110%;">
+      </td>
+
+</tr>
+</table>
