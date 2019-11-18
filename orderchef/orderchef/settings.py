@@ -27,7 +27,7 @@ SECRET_KEY = '$hfwbubu6^(l($=f_3nfz9nvn*gbkw66nxibsro0%r7be*svbu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['orderchef.herokuapp.com']
 
 
 # Application definition
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'orderchef.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['../rest_api/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

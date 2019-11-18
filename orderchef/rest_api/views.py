@@ -1,6 +1,8 @@
 # Create your views here.
 
 from django.contrib.auth.models import User, Group
+from django.shortcuts import render
+from django.views.generic import TemplateView
 from rest_api.models import Allergy, Cuisine, Ingredient, Location, Recipe
 from rest_api.serializers import UserSerializer, GroupSerializer, AllergySerializer, CuisineSerializer, \
     IngredientSerializer, LocationSerializer, RecipeSerializer, RegistrationSerializer
@@ -92,3 +94,9 @@ def register(request):
 #      if users.count() > 0:
 #          return Response(serializer.data, status=status.HTTP_201_CREATED)
 #      return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class HomePageView(TemplateView):
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'index.html', context=None)
