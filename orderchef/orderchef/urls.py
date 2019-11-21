@@ -27,12 +27,14 @@ router.register(r'allergies', views.AllergyViewSet)
 router.register(r'cuisines', views.CuisineViewSet)
 router.register(r'ingredients', views.IngredientViewSet)
 router.register(r'locations', views.LocationViewSet)
+router.register(r'recipesingredients', views.RecipesIngredientsViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', include(router.urls)),
+    path('api', include(router.urls)),
     url('', views.HomePageView.as_view()),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('rest-auth/', include('rest_auth.urls')),
     path('register/', views.register),
-  #  path('login/', views.login),
+    #  path('login/', views.login),
 ]
