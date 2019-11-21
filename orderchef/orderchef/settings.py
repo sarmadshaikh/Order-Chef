@@ -83,14 +83,25 @@ WSGI_APPLICATION = 'orderchef.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'orderchef',
+#         'USER': 'orderchef',
+#         'PASSWORD': 'test',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'orderchef',
-        'USER': 'orderchef',
-        'PASSWORD': 'test',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': 'dbljq6p7ddapol',
+        'USER': 'djyyahnraonoty',
+        'PASSWORD': '5b9dfa355a37fc58f5fcbd77c865730e56c7438d2eb8df086c33a481024a867f',
+        'HOST': 'ec2-54-246-84-100.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
