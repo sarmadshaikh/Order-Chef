@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User, Group
-from rest_api.models import Allergy, Cuisine, Ingredient, Location, Recipe
+from rest_api.models import Allergy, Cuisine, Ingredient, Location, Recipe, RecipesIngredients
 from rest_framework import serializers
 
 
@@ -19,32 +19,38 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class AllergySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Allergy
-        fields = ['allergy_id', 'name']
+        fields = ['id', 'name']
 
 
 class CuisineSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Cuisine
-        fields = ['cuisine_id', 'name']
+        fields = ['id', 'name']
 
 
 class IngredientSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Ingredient
-        fields = ['ingredient_id', 'name', 'calories']
+        fields = ['id', 'name', 'calories']
 
 
 class LocationSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Location
-        fields = ['location_id', 'country']
+        fields = ['id', 'country']
 
 
 class RecipeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Recipe
-        fields = ['recipe_id', 'name', 'image', 'author', 'prep_time_min', 'cook_time_min', 'calories', 'directions',
+        fields = ['id', 'name', 'image', 'author', 'prep_time_min', 'cook_time_min', 'calories', 'directions',
                   'cuisine', 'ingredients']
+
+
+class RecipesIngredientsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = RecipesIngredients
+        fields = ['id', 'quantity']
 
 
 class RegistrationSerializer(serializers.Serializer):

@@ -4,7 +4,7 @@ from django.utils.timezone import now
 
 
 class Allergy(models.Model):
-    allergy_id = models.AutoField(primary_key=True)
+    allergy_id = models.AutoField(primary_key=True, default=0)
     name = models.CharField(max_length=45)
 
     class Meta:
@@ -12,7 +12,7 @@ class Allergy(models.Model):
 
 
 class Cuisine(models.Model):
-    cuisine_id = models.AutoField(primary_key=True)
+    cuisine_id = models.AutoField(primary_key=True, default=0)
     name = models.CharField(max_length=45)
 
     class Meta:
@@ -20,7 +20,7 @@ class Cuisine(models.Model):
 
 
 class Ingredient(models.Model):
-    ingredient_id = models.AutoField(primary_key=True)
+    ingredient_id = models.AutoField(primary_key=True, default=0)
     name = models.CharField(max_length=45)
     calories = models.IntegerField()
 
@@ -29,7 +29,7 @@ class Ingredient(models.Model):
 
 
 class Location(models.Model):
-    location_id = models.AutoField(primary_key=True)
+    location_id = models.AutoField(primary_key=True, default=0)
     country = models.CharField(max_length=45)
 
     class Meta:
@@ -37,12 +37,12 @@ class Location(models.Model):
 
 
 class Recipe(models.Model):
-    recipe_id = models.AutoField(primary_key=True)
+    recipe_id = models.AutoField(primary_key=True, default=0)
     name = models.CharField(max_length=100)
     image = models.CharField(max_length=100)
     author = models.CharField(max_length=45)
-    prep_time_min = models.IntegerField()
-    cook_time_min = models.IntegerField()
+    prep_time_min = models.IntegerField(default=0)
+    cook_time_min = models.IntegerField(default=0)
     calories = models.IntegerField()
     directions = models.TextField()
     cuisine = models.ForeignKey(Cuisine, on_delete=models.CASCADE)
@@ -53,7 +53,8 @@ class Recipe(models.Model):
 
 
 class RecipesIngredients(models.Model):
-    quantity = models.IntegerField()
+    id = models.AutoField(primary_key=True, default=0)
+    quantity = models.IntegerField(default=0)
     recipes_id = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     ingredients_id = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
 
@@ -67,7 +68,7 @@ class Profile(models.Model):
         ('NONVEG', 'Non-Vegetarian'),
         ('VEGAN', 'Vegan')
     ]
-    profile_id = models.AutoField(primary_key=True)
+    profile_id = models.AutoField(primary_key=True, default=0)
     first_name = models.CharField(max_length=45)
     last_name = models.CharField(max_length=45)
     date_of_birth = models.DateField(default=None)
@@ -86,28 +87,30 @@ class Profile(models.Model):
 
 
 class ProfilesRecipes(models.Model):
+    id = models.AutoField(primary_key=True, default=0)
     creation_date = models.DateField(default=django.utils.timezone.now)
-    recipes_id = models.ForeignKey(Recipe, on_delete=models.CASCADE)
-    profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    recipes_id = models.ForeignKey(Recipe, on_delete=models.CASCADE, default=0)
+    profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE, default=0)
 
     class Meta:
         db_table = 'recipes_profiles'
 
 
 class ProfilesAllergies(models.Model):
+    id = models.AutoField(primary_key=True, default=0)
     creation_date = models.DateField(default=django.utils.timezone.now)
-    allergies_id = models.ForeignKey(Allergy, on_delete=models.CASCADE)
-    profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    allergies_id = models.ForeignKey(Allergy, on_delete=models.CASCADE, default=0)
+    profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE, default=0)
 
     class Meta:
         db_table = 'profiles_allergies'
 
 
 class GroceryList(models.Model):
-    list_id = models.AutoField(primary_key=True)
+    list_id = models.AutoField(primary_key=True, default=0)
     name = models.CharField(max_length=45)
     creation_date = models.DateField(default=django.utils.timezone.now)
-    profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE, default=0)
     ingredients = models.ManyToManyField(Ingredient, through="GroceryListIngredients")
 
     class Meta:
@@ -115,7 +118,8 @@ class GroceryList(models.Model):
 
 
 class GroceryListIngredients(models.Model):
-    quantity = models.IntegerField()
+    id = models.BigIntegerField(primary_key=True)
+    quantity = models.IntegerField(default=0)
     groceryList_id = models.ForeignKey(GroceryList, on_delete=models.CASCADE)
     ingredients_id = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
 
