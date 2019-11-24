@@ -13,6 +13,7 @@ import {SignUpComponent} from './sign-up/sign-up.component';
 import {HttpClientModule} from '@angular/common/http';
 import {NgImageSliderModule} from 'ng-image-slider';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
+import {SearchPageComponent} from './search-page/search-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {SlickCarouselModule} from 'ngx-slick-carousel';
     OurServicesComponent,
     AboutUsComponent,
     ContactUsComponent,
-    SignUpComponent
+    SignUpComponent,
+    SearchPageComponent
   ],
   imports: [
     NgImageSliderModule,
@@ -37,7 +39,8 @@ import {SlickCarouselModule} from 'ngx-slick-carousel';
       { path: 'ourservices', component: OurServicesComponent},
       { path: 'aboutus', component: AboutUsComponent},
       { path: 'contactus', component: ContactUsComponent},
-      { path: 'signup', component: SignUpComponent}
+      { path: 'signup', component: SignUpComponent},
+      { path: 'search', component: SearchPageComponent}
     ])
   ],
   providers: [],

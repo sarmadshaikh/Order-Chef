@@ -1,0 +1,12 @@
+<form class="form-signin" #f="ngForm" (ngSubmit)="userSearch(ingredientsFormArray)">
+<h4>Categories</h4>
+<div class="form-check" *ngFor="let ing of ingredientsArr">
+    <input class="form-check-input" (change)="onChange(ing.name, $event.target.checked)" name="{{ ing.name }}" type="checkbox" id="{{ing.name}}">
+    <label class="form-check-label" for="{{ing.name}}">
+        {{ing.name}}
+    </label>
+</div>
+<div><button type="submit">search</button></div>
+
+
+</form>

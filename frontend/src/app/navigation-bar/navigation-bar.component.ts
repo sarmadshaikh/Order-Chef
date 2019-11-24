@@ -6,10 +6,8 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./navigation-bar.component.css']
 })
 export class NavigationBarComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {
   }
-
 }
