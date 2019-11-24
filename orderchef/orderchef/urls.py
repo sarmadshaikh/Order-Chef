@@ -30,11 +30,11 @@ router.register(r'locations', views.LocationViewSet)
 router.register(r'recipesingredients', views.RecipesIngredientsViewSet)
 
 urlpatterns = [
+    path('rest-auth/', include('rest_auth.urls')),
+    path('register/', views.register),
     path('admin/', admin.site.urls),
     path('api', include(router.urls)),
     url('', views.HomePageView.as_view()),
     # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('rest-auth/', include('rest_auth.urls')),
-    path('register/', views.register),
     #  path('login/', views.login),
 ]
