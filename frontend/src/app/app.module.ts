@@ -14,6 +14,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {NgImageSliderModule} from 'ng-image-slider';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {SearchPageComponent} from './search-page/search-page.component';
+import {NgbAlertModule, NgbCarouselModule, NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -34,14 +35,17 @@ import {SearchPageComponent} from './search-page/search-page.component';
     SlickCarouselModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent},
-      { path: 'login', component: LoginComponent},
-      { path: 'ourservices', component: OurServicesComponent},
-      { path: 'aboutus', component: AboutUsComponent},
-      { path: 'contactus', component: ContactUsComponent},
-      { path: 'signup', component: SignUpComponent},
-      { path: 'search', component: SearchPageComponent}
-    ])
+      {path: '', component: HomeComponent},
+      {path: 'login', component: LoginComponent},
+      {path: 'ourservices', component: OurServicesComponent},
+      {path: 'aboutus', component: AboutUsComponent},
+      {path: 'contactus', component: ContactUsComponent},
+      {path: 'signup', component: SignUpComponent},
+      {path: 'search', component: SearchPageComponent}
+    ]),
+    NgbCarouselModule,
+       NgbPaginationModule,
+    NgbAlertModule
   ],
   providers: [],
   bootstrap: [AppComponent]

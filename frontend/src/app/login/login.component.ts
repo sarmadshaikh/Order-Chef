@@ -13,7 +13,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
- userLogin(email) {
-    window.alert('hello from the other side' + JSON.stringify(email));
+
+ userLogin(username, email, password) {
+let customer = {email: 'admin@example.com',
+      password: 'admin',
+      username: 'admin'
+    };
+window.alert('hello from the other side' + JSON.stringify(this.sloginAPI.loginAPI(customer)));
  }
 }
