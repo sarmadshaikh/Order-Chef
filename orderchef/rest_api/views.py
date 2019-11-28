@@ -1,12 +1,12 @@
 # Create your views here.
 from django.contrib.auth.models import User, Group
-from django.db import transaction
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from rest_api.models import Allergy, Cuisine, Ingredient, Location, Recipe, RecipesIngredients
 from rest_api.serializers import UserSerializer, GroupSerializer, AllergySerializer, CuisineSerializer, \
-    IngredientSerializer, LocationSerializer, RecipeSerializer, RegistrationSerializer, RecipesIngredientsSerializer
-from rest_framework import viewsets, status
+    LocationSerializer, RecipeSerializer, RegistrationSerializer, RecipesIngredientsSerializer, \
+    IngredientSerializer
+from rest_framework import viewsets, status, generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -59,12 +59,20 @@ class LocationViewSet(viewsets.ModelViewSet):
     serializer_class = LocationSerializer
 
 
-class LocationViewSet(viewsets.ModelViewSet):
+class RecipeViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
+
+
+class IngredientViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Ingredient.objects.all()
+    serializer_class = IngredientSerializer
 
 
 class RecipesIngredientsViewSet(viewsets.ModelViewSet):
@@ -73,6 +81,50 @@ class RecipesIngredientsViewSet(viewsets.ModelViewSet):
     """
     queryset = RecipesIngredients.objects.all()
     serializer_class = RecipesIngredientsSerializer
+
+
+# class getIngredientsPerRecipe(generics.ListAPIView):
+#     model = RecipesIngredients
+#     serializer_class = RecipesIngredientsSerializer
+#
+#     def get_queryset(self):
+#         """
+#         Optionally restricts the returned purchases to a given user,
+#         by filtering against a `username` query parameter in the URL.
+#         """
+#         queryset = RecipesIngredients.objects.all()
+#         recipes_id = self.request.query_params.get('recipes_id', None)
+#         if recipes_id is not None:
+#             queryset = queryset.filter(recipes_id=recipes_id)
+#         return queryset
+
+
+class getIngredientsPerRecipe(generics.ListAPIView):
+    serializer_class = RecipesIngredientsSerializer
+    # queryset = RecipesIngredients.objects.all()
+
+    def get_queryset(self):
+        queryset = RecipesIngredients.objects.all()
+        rid = self.request.query_params.get('recipes_id', '')
+        if rid:
+            queryset = queryset.filter(recipes_id_id=rid)
+
+        return queryset
+
+
+class getRecipesPerIngredients(generics.ListAPIView):
+    serializer_class = RecipesIngredientsSerializer
+    # queryset = RecipesIngredients.objects.all()
+
+    def get_queryset(self):
+        queryset = RecipesIngredients.objects.all()
+        iid = self.request.query_params.get('Ingredients_Ids', '')
+        iid = iid.split(',')
+        if iid:
+            # queryset = queryset.filter(recipes_id_id=rid)
+            queryset = queryset.filter(ingredients_id_id__in=iid)
+
+        return queryset
 
 
 @api_view(['GET', 'POST'])

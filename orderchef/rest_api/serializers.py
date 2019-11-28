@@ -43,14 +43,21 @@ class LocationSerializer(serializers.HyperlinkedModelSerializer):
 class RecipeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Recipe
-        fields = ['id', 'name', 'image', 'author', 'prep_time_min', 'cook_time_min', 'calories', 'directions',
+        fields = ['recipe_id', 'name', 'image', 'author', 'prep_time_min', 'cook_time_min', 'calories', 'directions',
                   'cuisine', 'ingredients']
+
+
+class IngredientSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Ingredient
+        fields = ['ingredient_id', 'name', 'calories']
 
 
 class RecipesIngredientsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = RecipesIngredients
-        fields = ['id', 'quantity']
+        fields = ['id', 'quantity', 'ingredients_id', 'recipes_id']
+        depth = 1
 
 
 class RegistrationSerializer(serializers.Serializer):
