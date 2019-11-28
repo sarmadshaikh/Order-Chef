@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-search-page',
@@ -6,9 +6,10 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./search-page.component.css']
 })
 export class SearchPageComponent implements OnInit {
+  @Output() valueChange = new EventEmitter();
 ingredientsFormArray: Array<any> = [];
   ingredientsArr = [
-    {name : 'ingredient1', id: 1},
+    {name : 'Potato', id: 1},
     {name : 'ingredient2', id: 2},
     {name : 'ingredient3', id: 3},
     {name : 'ingredient4', id: 4},
@@ -26,7 +27,8 @@ ingredientsFormArray: Array<any> = [];
       }
   }
   userSearch(ingredients) {
-    window.alert('hello from the other side' + JSON.stringify(ingredients));
+    window.alert('hello from the other side 1' + JSON.stringify(ingredients));
+     this.valueChange.emit(JSON.stringify(ingredients));
  }
   constructor() { }
 
