@@ -17,6 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 from rest_api import views
+from rest_api.views import getIngredientsPerRecipe, getRecipesPerIngredients
 from rest_framework import routers
 
 router = routers.DefaultRouter()
@@ -27,12 +28,18 @@ router.register(r'allergies', views.AllergyViewSet)
 router.register(r'cuisines', views.CuisineViewSet)
 router.register(r'ingredients', views.IngredientViewSet)
 router.register(r'locations', views.LocationViewSet)
+router.register(r'recipes', views.RecipeViewSet)
+router.register(r'ingredient', views.IngredientViewSet)
 router.register(r'recipesingredients', views.RecipesIngredientsViewSet)
 
 urlpatterns = [
+    # path('ipr/', views.getIngredientsPerRecipe),
+    # path('ipr/', views.getIngredientsPerRecipe),
+    path('ipr/', getIngredientsPerRecipe.as_view()),
+    path('rpi/', getRecipesPerIngredients.as_view()),
     path('rest-auth/', include('rest_auth.urls')),
     path('register/', views.register),
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
     path('api', include(router.urls)),
     url('', views.HomePageView.as_view()),
     # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
