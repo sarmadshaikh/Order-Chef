@@ -11,7 +11,8 @@ export class HomeComponent {
    images = [
     { img: "assets/imgs/Home1.jpg" },
     { img: "assets/imgs/Home4.jpg" },
-    { img: "assets/imgs/Home5.jpg" }
+    { img: "assets/imgs/Home5.jpg" },
+     { img: "assets/imgs/Home6.jpg" }
   ];
   paused = false;
   unpauseOnArrow = false;

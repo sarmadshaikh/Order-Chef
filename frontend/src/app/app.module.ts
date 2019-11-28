@@ -15,6 +15,7 @@ import {NgImageSliderModule} from 'ng-image-slider';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {SearchPageComponent} from './search-page/search-page.component';
 import {NgbAlertModule, NgbCarouselModule, NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
+import {SearchResultsComponent} from './search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {NgbAlertModule, NgbCarouselModule, NgbPaginationModule} from '@ng-bootst
     AboutUsComponent,
     ContactUsComponent,
     SignUpComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    SearchResultsComponent
   ],
   imports: [
     NgImageSliderModule,
@@ -41,7 +43,8 @@ import {NgbAlertModule, NgbCarouselModule, NgbPaginationModule} from '@ng-bootst
       {path: 'aboutus', component: AboutUsComponent},
       {path: 'contactus', component: ContactUsComponent},
       {path: 'signup', component: SignUpComponent},
-      {path: 'search', component: SearchPageComponent}
+      {path: 'search', component: SearchPageComponent},
+      {path: 'search-result', component: SearchResultsComponent}
     ]),
     NgbCarouselModule,
        NgbPaginationModule,
