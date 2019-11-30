@@ -37,54 +37,30 @@
 
 </head>
 
-<body data-rsssl=1 class="home page-template-default page page-id-4474 _masterslider _msp_version_3.2.7 woocommerce-no-js tribe-no-js">
-
-    <div class="body-wrapper  header-style-1" data-home="index.html">
-
-
+<div class="body-wrapper  header-style-1" data-home="index.html">
         <div class="gdlr-page-title-wrapper">
             <div class="gdlr-page-title-overlay"></div>
             <div class="gdlr-page-title-container container">
                 <h1 class="gdlr-page-title">What are you looking for?</h1>
-<!--                <span class="gdlr-page-caption gdlr-title-font">Just pick one!</span>-->
             </div>
         </div>
-
         <div class="content-wrapper">
             <div class="gdlr-content">
                 <div class="with-sidebar-wrapper">
-<!--                    <div style="background-color:antiquewhite; height:40px;">-->
-<!--                        <div class="recipe" style="width: 50%; float:left; text-align: center;">-->
-<!--                            <h3>Stores</h3>-->
-<!--                        </div>-->
-<!--                        <div class="rest" style="width: 50%; float:right; text-align: center;">-->
-<!--                            <h3>Restaurants</h3>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="search" style="width:100%">-->
-
-<!--                            <form>-->
-<!--                                <div style="width: 50%;margin: 0 auto;">-->
-<!--                                    <div><input type="text" id ="search_input" placeholder="Search" style="width: 100%; height: 25px; margin: 0 auto;"><i class="fa fa-search" aria-hidden="true" style="position:absolute; top:72px; right: 350px;"></i></div>-->
-<!--                                </div>-->
-<!--                            </form>-->
-<!--                    </div>-->
-
-
                   <form #f="ngForm" (ngSubmit)="userSearch(ingredientsFormArray)" >
-<h4>Categories</h4>
-  <table>
-<div class="form-check" *ngFor="let ing of ingredientsArr">
+                    <h4>Categories</h4>
+                  <table>
+                    <div class="form-check" *ngFor="let ing of ingredientsArr">
 
-    <tr>
-    <td><input class="form-check-input" (change)="onChange(ing.name, $event.target.checked)" name="{{ ing.name }}" type="checkbox" id="{{ing.name}}"> </td>
-  <td><label class="form-check-label" for="{{ing.name}}">
-        {{ing.name}}
-    </label></td>
-    </tr>
+                    <tr>
+                      <td><input class="form-check-input" (change)="onChange(ing.name, $event.target.checked)" name="{{ ing.name }}" type="checkbox" id="{{ing.name}}"> </td>
+                       <td><label class="form-check-label" for="{{ing.name}}">
+                        {{ing.name}}
+                        </label></td>
+                    </tr>
 
-</div>
-  </table>
+                    </div>
+                  </table>
 <div><button type="submit">search</button></div>
 
 
@@ -93,7 +69,7 @@
 
 
 <div class="container">
-<div class="col-xs-12 col-md-6">
+<div class="col-xs-12 col-md-6" *ngIf="show" id="receipes">
 	  <div class="prod-info-main prod-wrap clearfix" *ngFor="let image of imageList">
 		<div class="row">
 				<div class="col-md-5 col-sm-12 col-xs-12">
@@ -115,8 +91,7 @@
 				<div class="Food-info smart-form">
 					<div class="row">
 						<div class="col-md-12">
-
-                            <a href="javascript:void(0);" class="btn btn-info">More info</a>
+                            <a href="javascript:void(0);" (click)="SeeMore()" class="btn btn-info">More info</a>
 						</div>
 
 					</div>
@@ -133,494 +108,236 @@
 </div>
 
 
-                    <div class="recipe_div" style="display:none;">
-                            <div class="content-wrapper">
-                                    <div class="gdlr-content">
+            <div class="recipe_div" style="display:none;">
+                    <div class="content-wrapper">
+                            <div class="gdlr-content">
 
-                                         <!-- Above Sidebar Section -->
+                                 <!-- Above Sidebar Section -->
 
-                                         <!-- Sidebar With Content Section -->
-                                        <div class="with-sidebar-wrapper">
-                                            <div class="with-sidebar-container container">
-                                                <div class="with-sidebar-left twelve columns">
-                                                    <div class="with-sidebar-content twelve columns">
-                                                        <section id="content-section-1">
-                                                            <div class="section-container container">
-                                                                <div class="blog-item-wrapper">
-                                                                    <div class="blog-item-holder">
-                                                                        <div class="gdlr-isotope" data-type="blog" data-layout="fitRows">
-                                                                            <div class="clear"></div>
-                                                                            <div class="four columns">
-                                                                                <div class="gdlr-item gdlr-blog-grid">
-                                                                                    <div class="gdlr-ux gdlr-blog-grid-ux">
-                                                                                        <article id="post-859" class="post-859 post type-post status-publish format-standard has-post-thumbnail hentry category-blog category-fit-row tag-blog tag-news">
-                                                                                            <div class="gdlr-standard-style">
-                                                                                                <div class="gdlr-blog-thumbnail">
-                                                                                                    <a href="../sedial-eiusmod-tempor/index.html"> <img src="../../assets/upload/photodune-1917819-grilled-steak-m-400x300.jpg" alt="" width="400" height="300" /></a>
-                                                                                                    <div class="gdlr-sticky-banner"><i class="fa fa-bullhorn"></i>Popular</div>
-                                                                                                </div>
+                                 <!-- Sidebar With Content Section -->
+                                <div class="with-sidebar-wrapper">
+                                    <div class="with-sidebar-container container">
+                                        <div class="with-sidebar-left twelve columns">
+                                            <div class="with-sidebar-content twelve columns">
+                                                <section id="content-section-1">
+                                                    <div class="section-container container">
+                                                        <div class="blog-item-wrapper">
+                                                            <div class="blog-item-holder">
+                                                                <div class="gdlr-isotope" data-type="blog" data-layout="fitRows">
+                                                                    <div class="clear"></div>
+                                                                    <div class="four columns">
+                                                                        <div class="gdlr-item gdlr-blog-grid">
+                                                                            <div class="gdlr-ux gdlr-blog-grid-ux">
+                                                                                <article id="post-859" class="post-859 post type-post status-publish format-standard has-post-thumbnail hentry category-blog category-fit-row tag-blog tag-news">
+                                                                                    <div class="gdlr-standard-style">
+                                                                                        <div class="gdlr-blog-thumbnail">
+                                                                                            <a href="../sedial-eiusmod-tempor/index.html"> <img src="../../assets/upload/photodune-1917819-grilled-steak-m-400x300.jpg" alt="" width="400" height="300" /></a>
+                                                                                            <div class="gdlr-sticky-banner"><i class="fa fa-bullhorn"></i>Popular</div>
+                                                                                        </div>
 
-                                                                                                <div class="gdlr-blog-info gdlr-info">
-                                                                                                    <div class="blog-info blog-date"><i class="fa fa-clock-o"></i><a href="../2013/12/03/index.html">8:00 - 20:00</a></div>
-                                                                                                    <div class="blog-info blog-author"><i class="fa fa-pencil"></i><a href="../author/superuser/index.html" title="Posts by John Smith" rel="author">8th district</a></div>
-                                                                                                    <div class="clear"></div>
-                                                                                                </div>
+                                                                                        <div class="gdlr-blog-info gdlr-info">
+                                                                                            <div class="blog-info blog-date"><i class="fa fa-clock-o"></i><a href="../2013/12/03/index.html">8:00 - 20:00</a></div>
+                                                                                            <div class="blog-info blog-author"><i class="fa fa-pencil"></i><a href="../author/superuser/index.html" title="Posts by John Smith" rel="author">8th district</a></div>
+                                                                                            <div class="clear"></div>
+                                                                                        </div>
 
-                                                                                                <header class="post-header">
-                                                                                                    <h3 class="gdlr-blog-title gdlr-content-font"><a href="../sedial-eiusmod-tempor/index.html">Store #1</a></h3>
-                                                                                                    <div class="clear"></div>
-                                                                                                </header>
-                                                                                                 <!-- entry-header  -->
+                                                                                        <header class="post-header">
+                                                                                            <h3 class="gdlr-blog-title gdlr-content-font"><a href="../sedial-eiusmod-tempor/index.html">Store #1</a></h3>
+                                                                                            <div class="clear"></div>
+                                                                                        </header>
+                                                                                         <!-- entry-header  -->
 
-                                                                                                <div class="gdlr-blog-content">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Idque Caesaris facere voluntate liceret: sese habere....
-                                                                                                    <div class="menu-info menu-rating gdlr-skin-link"><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star-half-full icon-star-half-full"></i></div>
-                                                                                                    <div class="clear"></div><a href="../sedial-eiusmod-tempor/index.html" class="excerpt-read-more">Open in google Maps</a></div>
-                                                                                            </div>
-                                                                                        </article>
-                                                                                         <!-- #post  -->
+                                                                                        <div class="gdlr-blog-content">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Idque Caesaris facere voluntate liceret: sese habere....
+                                                                                            <div class="menu-info menu-rating gdlr-skin-link"><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star-half-full icon-star-half-full"></i></div>
+                                                                                            <div class="clear"></div><a href="../sedial-eiusmod-tempor/index.html" class="excerpt-read-more">Open in google Maps</a></div>
                                                                                     </div>
-                                                                                </div>
+                                                                                </article>
+                                                                                 <!-- #post  -->
                                                                             </div>
-                                                                            <div class="four columns">
-                                                                                <div class="gdlr-item gdlr-blog-grid">
-                                                                                    <div class="gdlr-ux gdlr-blog-grid-ux">
-                                                                                        <article id="post-852" class="post-852 post type-post status-publish format-standard has-post-thumbnail hentry category-fit-row tag-blog tag-life-style">
-                                                                                            <div class="gdlr-standard-style">
-                                                                                                <div class="gdlr-blog-thumbnail">
-                                                                                                    <a href="../donec-luctus-imperdiet/index.html"> <img src="../../assets/upload/photodune-6672566-pizza-m-400x300.jpg" alt="" width="400" height="300" /></a>
-                                                                                                </div>
-
-                                                                                                <div class="gdlr-blog-info gdlr-info">
-                                                                                                    <div class="blog-info blog-date"><i class="fa fa-clock-o"></i><a href="../2013/12/03/index.html">8:00 - 20:00</a></div>
-                                                                                                    <div class="blog-info blog-author"><i class="fa fa-pencil"></i><a href="../author/superuser/index.html" title="Posts by John Smith" rel="author">8th district</a></div>
-                                                                                                    <div class="clear"></div>
-                                                                                                </div>
-
-                                                                                                <header class="post-header">
-                                                                                                    <h3 class="gdlr-blog-title gdlr-content-font"><a href="../donec-luctus-imperdiet/index.html">Store #2</a></h3>
-                                                                                                    <div class="clear"></div>
-                                                                                                </header>
-                                                                                                 <!-- entry-header  -->
-
-                                                                                                <div class="gdlr-blog-content">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Idque Caesaris facere voluntate liceret: sese habere....
-                                                                                                    <div class="menu-info menu-rating gdlr-skin-link"><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star-half-full icon-star-half-full"></i></div>
-                                                                                                    <div class="clear"></div><a href="../donec-luctus-imperdiet/index.html" class="excerpt-read-more">Open in google Maps</a></div>
-                                                                                            </div>
-                                                                                        </article>
-                                                                                         <!-- #post  -->
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="four columns">
-                                                                                    <div class="gdlr-item gdlr-blog-grid">
-                                                                                        <div class="gdlr-ux gdlr-blog-grid-ux">
-                                                                                            <article id="post-852" class="post-852 post type-post status-publish format-standard has-post-thumbnail hentry category-fit-row tag-blog tag-life-style">
-                                                                                                <div class="gdlr-standard-style">
-                                                                                                    <div class="gdlr-blog-thumbnail">
-                                                                                                        <a href="../donec-luctus-imperdiet/index.html"> <img src="../../assets/upload/photodune-6672566-pizza-m-400x300.jpg" alt="" width="400" height="300" /></a>
-                                                                                                    </div>
-
-                                                                                                    <div class="gdlr-blog-info gdlr-info">
-                                                                                                        <div class="blog-info blog-date"><i class="fa fa-clock-o"></i><a href="../2013/12/03/index.html">8:00 - 20:00</a></div>
-                                                                                                        <div class="blog-info blog-author"><i class="fa fa-pencil"></i><a href="../author/superuser/index.html" title="Posts by John Smith" rel="author">8th district</a></div>
-                                                                                                        <div class="clear"></div>
-                                                                                                    </div>
-
-                                                                                                    <header class="post-header">
-                                                                                                        <h3 class="gdlr-blog-title gdlr-content-font"><a href="../donec-luctus-imperdiet/index.html">Store #3</a></h3>
-                                                                                                        <div class="clear"></div>
-                                                                                                    </header>
-                                                                                                     <!-- entry-header  -->
-
-                                                                                                    <div class="gdlr-blog-content">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Idque Caesaris facere voluntate liceret: sese habere....
-                                                                                                        <div class="menu-info menu-rating gdlr-skin-link"><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star-half-full icon-star-half-full"></i></div>
-                                                                                                        <div class="clear"></div><a href="../donec-luctus-imperdiet/index.html" class="excerpt-read-more">Open in google Maps</a></div>
-                                                                                                </div>
-                                                                                            </article>
-                                                                                         <!-- #post  -->
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="four columns">
-                                                                                    <div class="gdlr-item gdlr-blog-grid">
-                                                                                        <div class="gdlr-ux gdlr-blog-grid-ux">
-                                                                                            <article id="post-852" class="post-852 post type-post status-publish format-standard has-post-thumbnail hentry category-fit-row tag-blog tag-life-style">
-                                                                                                <div class="gdlr-standard-style">
-                                                                                                    <div class="gdlr-blog-thumbnail">
-                                                                                                        <a href="../donec-luctus-imperdiet/index.html"> <img src="../../assets/upload/photodune-6672566-pizza-m-400x300.jpg" alt="" width="400" height="300" /></a>
-                                                                                                    </div>
-
-                                                                                                    <div class="gdlr-blog-info gdlr-info">
-                                                                                                        <div class="blog-info blog-date"><i class="fa fa-clock-o"></i><a href="../2013/12/03/index.html">8:00 - 20:00</a></div>
-                                                                                                        <div class="blog-info blog-author"><i class="fa fa-pencil"></i><a href="../author/superuser/index.html" title="Posts by John Smith" rel="author">8th district</a></div>
-                                                                                                        <div class="clear"></div>
-                                                                                                    </div>
-
-                                                                                                    <header class="post-header">
-                                                                                                        <h3 class="gdlr-blog-title gdlr-content-font"><a href="../donec-luctus-imperdiet/index.html">Store #4</a></h3>
-                                                                                                        <div class="clear"></div>
-                                                                                                    </header>
-                                                                                                     <!-- entry-header  -->
-
-                                                                                                    <div class="gdlr-blog-content">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Idque Caesaris facere voluntate liceret: sese habere....
-                                                                                                        <div class="menu-info menu-rating gdlr-skin-link"><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star-half-full icon-star-half-full"></i></div>
-                                                                                                        <div class="clear"></div><a href="../donec-luctus-imperdiet/index.html" class="excerpt-read-more">Open in google Maps</a></div>
-                                                                                                </div>
-                                                                                            </article>
-                                                                                         <!-- #post  -->
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="four columns">
-                                                                                    <div class="gdlr-item gdlr-blog-grid">
-                                                                                        <div class="gdlr-ux gdlr-blog-grid-ux">
-                                                                                            <article id="post-852" class="post-852 post type-post status-publish format-standard has-post-thumbnail hentry category-fit-row tag-blog tag-life-style">
-                                                                                                <div class="gdlr-standard-style">
-                                                                                                    <div class="gdlr-blog-thumbnail">
-                                                                                                        <a href="../donec-luctus-imperdiet/index.html"> <img src="../../assets/upload/photodune-6672566-pizza-m-400x300.jpg" alt="" width="400" height="300" /></a>
-                                                                                                    </div>
-
-                                                                                                    <div class="gdlr-blog-info gdlr-info">
-                                                                                                        <div class="blog-info blog-date"><i class="fa fa-clock-o"></i><a href="../2013/12/03/index.html">8:00 - 20:00</a></div>
-                                                                                                        <div class="blog-info blog-author"><i class="fa fa-pencil"></i><a href="../author/superuser/index.html" title="Posts by John Smith" rel="author">8th district</a></div>
-                                                                                                        <div class="clear"></div>
-                                                                                                    </div>
-
-                                                                                                    <header class="post-header">
-                                                                                                        <h3 class="gdlr-blog-title gdlr-content-font"><a href="../donec-luctus-imperdiet/index.html">Store #5</a></h3>
-                                                                                                        <div class="clear"></div>
-                                                                                                    </header>
-                                                                                                     <!-- entry-header  -->
-
-                                                                                                    <div class="gdlr-blog-content">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Idque Caesaris facere voluntate liceret: sese habere....
-                                                                                                        <div class="menu-info menu-rating gdlr-skin-link"><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star-half-full icon-star-half-full"></i></div>
-                                                                                                        <div class="clear"></div><a href="../donec-luctus-imperdiet/index.html" class="excerpt-read-more">Open in google Maps</a></div>
-                                                                                                </div>
-                                                                                            </article>
-                                                                                         <!-- #post  -->
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="four columns">
-                                                                                    <div class="gdlr-item gdlr-blog-grid">
-                                                                                        <div class="gdlr-ux gdlr-blog-grid-ux">
-                                                                                            <article id="post-852" class="post-852 post type-post status-publish format-standard has-post-thumbnail hentry category-fit-row tag-blog tag-life-style">
-                                                                                                <div class="gdlr-standard-style">
-                                                                                                    <div class="gdlr-blog-thumbnail">
-                                                                                                        <a href="../donec-luctus-imperdiet/index.html"> <img src="../../assets/upload/photodune-6672566-pizza-m-400x300.jpg" alt="" width="400" height="300" /></a>
-                                                                                                    </div>
-
-                                                                                                    <div class="gdlr-blog-info gdlr-info">
-                                                                                                        <div class="blog-info blog-date"><i class="fa fa-clock-o"></i><a href="../2013/12/03/index.html">8:00 - 20:00</a></div>
-                                                                                                        <div class="blog-info blog-author"><i class="fa fa-pencil"></i><a href="../author/superuser/index.html" title="Posts by John Smith" rel="author">8th district</a></div>
-                                                                                                        <div class="clear"></div>
-                                                                                                    </div>
-
-                                                                                                    <header class="post-header">
-                                                                                                        <h3 class="gdlr-blog-title gdlr-content-font"><a href="../donec-luctus-imperdiet/index.html">Store #6</a></h3>
-                                                                                                        <div class="clear"></div>
-                                                                                                    </header>
-                                                                                                     <!-- entry-header  -->
-
-                                                                                                    <div class="gdlr-blog-content">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Idque Caesaris facere voluntate liceret: sese habere....
-                                                                                                        <div class="menu-info menu-rating gdlr-skin-link"><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star-half-full icon-star-half-full"></i></div>
-                                                                                                        <div class="clear"></div><a href="../donec-luctus-imperdiet/index.html" class="excerpt-read-more">Open in google Maps</a></div>
-                                                                                                </div>
-                                                                                            </article>
-                                                                                        <!-- #post  -->
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="clear"></div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="gdlr-pagination"><span aria-current='page' class='page-numbers current'>1</span>
-                                                                        <a class='page-numbers' href='page/2/index.html'>2</a>
-                                                                        <a class="next page-numbers" href="page/2/index.html">Next &rsaquo;</a></div>
-                                                                </div>
-                                                                <div class="clear"></div>
-                                                            </div>
-                                                        </section>
-                                                    </div>
+                                                                    <div class="four columns">
+                                                                        <div class="gdlr-item gdlr-blog-grid">
+                                                                            <div class="gdlr-ux gdlr-blog-grid-ux">
+                                                                                <article id="post-852" class="post-852 post type-post status-publish format-standard has-post-thumbnail hentry category-fit-row tag-blog tag-life-style">
+                                                                                    <div class="gdlr-standard-style">
+                                                                                        <div class="gdlr-blog-thumbnail">
+                                                                                            <a href="../donec-luctus-imperdiet/index.html"> <img src="../../assets/upload/photodune-6672566-pizza-m-400x300.jpg" alt="" width="400" height="300" /></a>
+                                                                                        </div>
 
-                                                    <div class="clear"></div>
-                                                </div>
+                                                                                        <div class="gdlr-blog-info gdlr-info">
+                                                                                            <div class="blog-info blog-date"><i class="fa fa-clock-o"></i><a href="../2013/12/03/index.html">8:00 - 20:00</a></div>
+                                                                                            <div class="blog-info blog-author"><i class="fa fa-pencil"></i><a href="../author/superuser/index.html" title="Posts by John Smith" rel="author">8th district</a></div>
+                                                                                            <div class="clear"></div>
+                                                                                        </div>
 
-                                            </div>
-                                        </div>
+                                                                                        <header class="post-header">
+                                                                                            <h3 class="gdlr-blog-title gdlr-content-font"><a href="../donec-luctus-imperdiet/index.html">Store #2</a></h3>
+                                                                                            <div class="clear"></div>
+                                                                                        </header>
+                                                                                         <!-- entry-header  -->
 
-                                        <!-- Below Sidebar Section -->
+                                                                                        <div class="gdlr-blog-content">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Idque Caesaris facere voluntate liceret: sese habere....
+                                                                                            <div class="menu-info menu-rating gdlr-skin-link"><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star-half-full icon-star-half-full"></i></div>
+                                                                                            <div class="clear"></div><a href="../donec-luctus-imperdiet/index.html" class="excerpt-read-more">Open in google Maps</a></div>
+                                                                                    </div>
+                                                                                </article>
+                                                                                 <!-- #post  -->
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="four columns">
+                                                                            <div class="gdlr-item gdlr-blog-grid">
+                                                                                <div class="gdlr-ux gdlr-blog-grid-ux">
+                                                                                    <article id="post-852" class="post-852 post type-post status-publish format-standard has-post-thumbnail hentry category-fit-row tag-blog tag-life-style">
+                                                                                        <div class="gdlr-standard-style">
+                                                                                            <div class="gdlr-blog-thumbnail">
+                                                                                                <a href="../donec-luctus-imperdiet/index.html"> <img src="../../assets/upload/photodune-6672566-pizza-m-400x300.jpg" alt="" width="400" height="300" /></a>
+                                                                                            </div>
 
-                                    </div>
-                                    <!-- gdlr-content -->
-                                    <div class="clear"></div>
-                                </div>
-                    </div>
-                    <div class="rest_div">
-                        <div class="content-wrapper">
-                            <div class="gdlr-content">
-                                <div class="with-sidebar-wrapper">
-                                    <div class="with-sidebar-container container gdlr-class-right-sidebar">
-                                        <div class="with-sidebar-left eight columns">
-                                            <div class="with-sidebar-content twelve columns">
-                                                <div class="gdlr-item gdlr-item-start-content">
-                                                    <div id="menu-4178" class="post-4178 menu type-menu status-publish has-post-thumbnail hentry menu_category-dinner menu_category-grid menu_category-main-dish menu_tag-australian menu_tag-beef menu_tag-ribeye menu_tag-steak">
-                                                        <div class="gdlr-menu-thumbnail">
-                                                            <a href="../../assets/upload/shutterstock_208221007.jpg" data-rel="fancybox"><img src="../../assets/upload/shutterstock_208221007-750x330.jpg" alt="" width="750" height="330" /></a>
-                                                        </div>
-                                                        <div class="gdlr-single-menu-content">
-                                                            <h4>Directions</h4>
-                                                            <ol>
-                                                                <li>In a Dutch oven, cook sausage, ground beef, onion, and garlic over medium heat until well browned. Stir in crushed tomatoes, tomato paste, tomato sauce, and water. Season with sugar, basil, fennel seeds, Italian seasoning, 1 tablespoon salt, pepper, and 2 tablespoons parsley. Simmer, covered, for about 1 1/2 hours, stirring occasionally.</li>
-                                                                <li>Bring a large pot of lightly salted water to a boil. Cook lasagna noodles in boiling water for 8 to 10 minutes. Drain noodles, and rinse with cold water. In a mixing bowl, combine ricotta cheese with egg, remaining parsley, and 1/2 teaspoon salt.</li>
-                                                                <li>Preheat oven to 375 degrees F (190 degrees C).</li>
-                                                                <li>To assemble, spread 1 1/2 cups of meat sauce in the bottom of a 9&#215;13 inch baking dish. Arrange 6 noodles lengthwise over meat sauce. Spread with one half of the ricotta cheese mixture. Top with a third of mozzarella cheese slices. Spoon 1 1/2 cups meat sauce over mozzarella, and sprinkle with 1/4 cup Parmesan cheese. Repeat layers, and top with remaining mozzarella and Parmesan cheese. Cover with foil: to prevent sticking, either spray foil with cooking spray, or make sure the foil does not touch the cheese.</li>
-                                                                <li>Bake in preheated oven for 25 minutes. Remove foil, and bake an additional 25 minutes. Cool for 15 minutes before serving.</li>
-                                                            </ol>
-                                                        </div>
-                                                    </div>
-                                                    <!-- #menu -->
+                                                                                            <div class="gdlr-blog-info gdlr-info">
+                                                                                                <div class="blog-info blog-date"><i class="fa fa-clock-o"></i><a href="../2013/12/03/index.html">8:00 - 20:00</a></div>
+                                                                                                <div class="blog-info blog-author"><i class="fa fa-pencil"></i><a href="../author/superuser/index.html" title="Posts by John Smith" rel="author">8th district</a></div>
+                                                                                                <div class="clear"></div>
+                                                                                            </div>
 
-                                                    <div class="clear"></div>
-                                                    <div class="gdlr-social-share">
-                                                        <span class="social-share-title">Share Post:</span>
-                                                        <a href="#" target="_blank">
-                                                            <img src="images/social-share/digg.png" alt="digg-share" width="32" height="32" />
-                                                        </a>
+                                                                                            <header class="post-header">
+                                                                                                <h3 class="gdlr-blog-title gdlr-content-font"><a href="../donec-luctus-imperdiet/index.html">Store #3</a></h3>
+                                                                                                <div class="clear"></div>
+                                                                                            </header>
+                                                                                             <!-- entry-header  -->
 
-                                                        <a href="#" target="_blank">
-                                                            <img src="images/social-share/facebook.png" alt="facebook-share" width="32" height="32" />
-                                                        </a>
+                                                                                            <div class="gdlr-blog-content">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Idque Caesaris facere voluntate liceret: sese habere....
+                                                                                                <div class="menu-info menu-rating gdlr-skin-link"><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star-half-full icon-star-half-full"></i></div>
+                                                                                                <div class="clear"></div><a href="../donec-luctus-imperdiet/index.html" class="excerpt-read-more">Open in google Maps</a></div>
+                                                                                        </div>
+                                                                                    </article>
+                                                                                 <!-- #post  -->
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="four columns">
+                                                                            <div class="gdlr-item gdlr-blog-grid">
+                                                                                <div class="gdlr-ux gdlr-blog-grid-ux">
+                                                                                    <article id="post-852" class="post-852 post type-post status-publish format-standard has-post-thumbnail hentry category-fit-row tag-blog tag-life-style">
+                                                                                        <div class="gdlr-standard-style">
+                                                                                            <div class="gdlr-blog-thumbnail">
+                                                                                                <a href="../donec-luctus-imperdiet/index.html"> <img src="../../assets/upload/photodune-6672566-pizza-m-400x300.jpg" alt="" width="400" height="300" /></a>
+                                                                                            </div>
 
-                                                        <a href="#">
-                                                            <img src="images/social-share/google-plus.png" alt="google-share" width="32" height="32" />
-                                                        </a>
+                                                                                            <div class="gdlr-blog-info gdlr-info">
+                                                                                                <div class="blog-info blog-date"><i class="fa fa-clock-o"></i><a href="../2013/12/03/index.html">8:00 - 20:00</a></div>
+                                                                                                <div class="blog-info blog-author"><i class="fa fa-pencil"></i><a href="../author/superuser/index.html" title="Posts by John Smith" rel="author">8th district</a></div>
+                                                                                                <div class="clear"></div>
+                                                                                            </div>
 
-                                                        <a href="#" target="_blank">
-                                                            <img src="images/social-share/linkedin.png" alt="linked-share" width="32" height="32" />
-                                                        </a>
+                                                                                            <header class="post-header">
+                                                                                                <h3 class="gdlr-blog-title gdlr-content-font"><a href="../donec-luctus-imperdiet/index.html">Store #4</a></h3>
+                                                                                                <div class="clear"></div>
+                                                                                            </header>
+                                                                                             <!-- entry-header  -->
 
-                                                        <a href="#" target="_blank">
-                                                            <img src="images/social-share/my-space.png" alt="my-space-share" width="32" height="32" />
-                                                        </a>
+                                                                                            <div class="gdlr-blog-content">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Idque Caesaris facere voluntate liceret: sese habere....
+                                                                                                <div class="menu-info menu-rating gdlr-skin-link"><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star-half-full icon-star-half-full"></i></div>
+                                                                                                <div class="clear"></div><a href="../donec-luctus-imperdiet/index.html" class="excerpt-read-more">Open in google Maps</a></div>
+                                                                                        </div>
+                                                                                    </article>
+                                                                                 <!-- #post  -->
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="four columns">
+                                                                            <div class="gdlr-item gdlr-blog-grid">
+                                                                                <div class="gdlr-ux gdlr-blog-grid-ux">
+                                                                                    <article id="post-852" class="post-852 post type-post status-publish format-standard has-post-thumbnail hentry category-fit-row tag-blog tag-life-style">
+                                                                                        <div class="gdlr-standard-style">
+                                                                                            <div class="gdlr-blog-thumbnail">
+                                                                                                <a href="../donec-luctus-imperdiet/index.html"> <img src="../../assets/upload/photodune-6672566-pizza-m-400x300.jpg" alt="" width="400" height="300" /></a>
+                                                                                            </div>
 
-                                                        <a href="#" class="pin-it-button" count-layout="horizontal">
-                                                            <img src="images/social-share/pinterest.png" alt="pinterest-share" width="32" height="32" />
-                                                        </a>
+                                                                                            <div class="gdlr-blog-info gdlr-info">
+                                                                                                <div class="blog-info blog-date"><i class="fa fa-clock-o"></i><a href="../2013/12/03/index.html">8:00 - 20:00</a></div>
+                                                                                                <div class="blog-info blog-author"><i class="fa fa-pencil"></i><a href="../author/superuser/index.html" title="Posts by John Smith" rel="author">8th district</a></div>
+                                                                                                <div class="clear"></div>
+                                                                                            </div>
 
-                                                        <a href="#" target="_blank">
-                                                            <img src="images/social-share/reddit.png" alt="reddit-share" width="32" height="32" />
-                                                        </a>
+                                                                                            <header class="post-header">
+                                                                                                <h3 class="gdlr-blog-title gdlr-content-font"><a href="../donec-luctus-imperdiet/index.html">Store #5</a></h3>
+                                                                                                <div class="clear"></div>
+                                                                                            </header>
+                                                                                             <!-- entry-header  -->
 
-                                                        <a href="#" target="_blank">
-                                                            <img src="images/social-share/stumble-upon.png" alt="stumble-upon-share" width="32" height="32" />
-                                                        </a>
+                                                                                            <div class="gdlr-blog-content">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Idque Caesaris facere voluntate liceret: sese habere....
+                                                                                                <div class="menu-info menu-rating gdlr-skin-link"><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star-half-full icon-star-half-full"></i></div>
+                                                                                                <div class="clear"></div><a href="../donec-luctus-imperdiet/index.html" class="excerpt-read-more">Open in google Maps</a></div>
+                                                                                        </div>
+                                                                                    </article>
+                                                                                 <!-- #post  -->
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="four columns">
+                                                                            <div class="gdlr-item gdlr-blog-grid">
+                                                                                <div class="gdlr-ux gdlr-blog-grid-ux">
+                                                                                    <article id="post-852" class="post-852 post type-post status-publish format-standard has-post-thumbnail hentry category-fit-row tag-blog tag-life-style">
+                                                                                        <div class="gdlr-standard-style">
+                                                                                            <div class="gdlr-blog-thumbnail">
+                                                                                                <a href="../donec-luctus-imperdiet/index.html"> <img src="../../assets/upload/photodune-6672566-pizza-m-400x300.jpg" alt="" width="400" height="300" /></a>
+                                                                                            </div>
 
-                                                        <div class="clear"></div>
-                                                    </div>
+                                                                                            <div class="gdlr-blog-info gdlr-info">
+                                                                                                <div class="blog-info blog-date"><i class="fa fa-clock-o"></i><a href="../2013/12/03/index.html">8:00 - 20:00</a></div>
+                                                                                                <div class="blog-info blog-author"><i class="fa fa-pencil"></i><a href="../author/superuser/index.html" title="Posts by John Smith" rel="author">8th district</a></div>
+                                                                                                <div class="clear"></div>
+                                                                                            </div>
 
-                                                    <div class="gdlr-single-blog-tag">
-                                                        <div class="blog-info menu-info menu-tag"><i class="fa fa-tags icon-tag"></i><a href="#" rel="tag">Australian</a><span class="sep">,</span> <a href="#" rel="tag">Beef</a><span class="sep">,</span> <a href="#" rel="tag">Ribeye</a><span class="sep">,</span> <a href="#" rel="tag">Steak</a></div>
-                                                    </div>
+                                                                                            <header class="post-header">
+                                                                                                <h3 class="gdlr-blog-title gdlr-content-font"><a href="../donec-luctus-imperdiet/index.html">Store #6</a></h3>
+                                                                                                <div class="clear"></div>
+                                                                                            </header>
+                                                                                             <!-- entry-header  -->
 
-                                                    <nav class="gdlr-single-nav">
-                                                        <div class="previous-nav"><a href="#" rel="prev"><i class="icon-long-arrow-left fa fa-long-arrow-left"></i><span class="single-nav-text" >Previous Food</span><div class="single-nav-title">Rainbow Macaroon</div></a></div>
-                                                        <div class="clear"></div>
-                                                    </nav>
-                                                    <!-- .nav-single -->
-
-                                                    <!-- related post section -->
-
-                                                    <!-- about author section -->
-                                                    <div class="gdlr-post-author">
-                                                        <div class="post-author-title">About Post Author</div>
-                                                        <div class="post-author-avartar"><img alt='' src='../../assets/upload/avatar.jpeg'  class='avatar avatar-90 photo' height='90' width='90' /></div>
-                                                        <div class="post-author-content">
-                                                            <div class="post-author"><a href="#" title="Posts by John Smith" rel="author">John Smith</a></div>
-                                                            Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue. </div>
-                                                        <div class="clear"></div>
-                                                    </div>
-
-                                                    <div id="comments" class="gdlr-comments-area">
-
-                                                        <div id="respond" class="comment-respond">
-                                                            <h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel Reply</a></small></h3>
-                                                            <form action="#" method="post" id="commentform" class="comment-form">
-                                                                <div class="comment-form-comment">
-                                                                    <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
-                                                                </div>
-                                                                <div class="comment-form-head">
-                                                                    <input id="author" name="author" type="text" value="" data-default="Name*" size="30" aria-required='true' />
-                                                                    <input id="email" name="email" type="text" value="" data-default="Email*" size="30" aria-required='true' />
-                                                                    <input id="url" name="url" type="text" value="" data-default="Website" size="30" />
+                                                                                            <div class="gdlr-blog-content">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Idque Caesaris facere voluntate liceret: sese habere....
+                                                                                                <div class="menu-info menu-rating gdlr-skin-link"><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star-half-full icon-star-half-full"></i></div>
+                                                                                                <div class="clear"></div><a href="../donec-luctus-imperdiet/index.html" class="excerpt-read-more">Open in google Maps</a></div>
+                                                                                        </div>
+                                                                                    </article>
+                                                                                <!-- #post  -->
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                     <div class="clear"></div>
                                                                 </div>
-                                                                <p class="comment-form-cookies-consent">
-                                                                    <input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" />
-                                                                    <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label>
-                                                                </p>
-                                                                <p class="form-submit">
-                                                                    <input name="submit" type="submit" id="submit" class="submit" value="Post Comment" />
-                                                                </p>
-                                                            </form>
+                                                            </div>
+                                                            <div class="gdlr-pagination"><span aria-current='page' class='page-numbers current'>1</span>
+                                                                <a class='page-numbers' href='page/2/index.html'>2</a>
+                                                                <a class="next page-numbers" href="page/2/index.html">Next &rsaquo;</a></div>
                                                         </div>
-                                                        <!-- #respond -->
+                                                        <div class="clear"></div>
                                                     </div>
-                                                    <!-- gdlr-comment-area -->
-                                                </div>
+                                                </section>
                                             </div>
 
-                                        <div class="clear"></div></div>
-                                        <div class="gdlr-sidebar gdlr-right-sidebar four columns">
-                                            <div class="gdlr-item-start-content sidebar-right-item">
-                                                <div class="gdlr-menu-sidebar gdlr-item">
-                                                    <div class="gdlr-single-menu-head">
-                                                        <h3 class="gdlr-menu-title">Australian Ribeye</h3>
-                                                        <div class="gdlr-single-menu-info">
-                                                            <div class="menu-info menu-rating gdlr-skin-link"><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i><i class="fa fa-star icon-star"></i></div>
-                                                            <div class="menu-info menu-recommendation"><span class="menu-recommendation-inner"><i class="fa fa-thumbs-o-up" ></i>Recommended</span></div>
-                                                            <div class="menu-info menu-ingredients-caption gdlr-skin-info">Chips, Beef, Salad</div>
-                                                        </div>
-                                                        <div class="gdlr-single-menu-sub-info">
-                                                            <div class="gdlr-single-menu-time">
-                                                                <div class="menu-info menu-total-time"><span class="gdlr-head">Total Time</span>1 hr 05 min</div>
-                                                                <div class="gdlr-single-menu-time-inner">
-                                                                    <div class="menu-info menu-prep-time"><span class="gdlr-head">Prep</span>20 min</div>
-                                                                    <div class="menu-info menu-cook-time"><span class="gdlr-head">Cook</span>45 min</div>
-                                                                </div>
-                                                                <div class="clear"></div>
-                                                            </div>
-                                                            <div class="gdlr-single-menu-serving">
-                                                                <div class="menu-info menu-yield"><span class="gdlr-head">Yield :</span>3 Dishes</div>
-                                                                <div class="menu-info menu-level"><span class="gdlr-head">Level :</span>Difficult</div>
-                                                                <div class="menu-info menu-price gdlr-title-font gdlr-skin-link">$42</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="gdlr-menu-ingredients">
-                                                        <h3 class="gdlr-menu-ingredients-title">Ingredients</h3>
-                                                        <div class="gdlr-menu-ingredients-content">
-                                                            <ul>
-                                                                <li>1 pound sweet Italian sausage</li>
-                                                                <li>3/4 pound lean ground beef</li>
-                                                                <li>2 cloves garlic, crushedt</li>
-                                                                <li>1 (28 ounce) can crushed tomatoes</li>
-                                                                <li>2 (6 ounce) cans tomato paste</li>
-                                                                <li>1/2 cup pesto sauce</li>
-                                                                <li>1 large tomato, chopped/li>
-                                                                    <li>2 teaspoons dried oregano</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><div class="clear"></div>
+                                            <div class="clear"></div>
+                                        </div>
+
                                     </div>
                                 </div>
+
+                                <!-- Below Sidebar Section -->
+
                             </div>
                             <!-- gdlr-content -->
+                            <div class="clear"></div>
                         </div>
-                        <div class="clear"></div></div>
-                    </div>
-                </div>
+            </div>
             </div>
         </div>
+    </div>
+</div>
 
 
-              <footer class="footer-wrapper">
-            <div class="footer-container container">
-                <div class="footer-column three columns" id="footer-widget-1">
-                    <div id="text-5" class="widget widget_text gdlr-item gdlr-widget">
-                        <h3 class="gdlr-widget-title">About Us</h3>
-                        <div class="clear"></div>
-                        <div class="textwidget"><i class="gdlr-icon fa fa-location-arrow" style="color: #fff; font-size: 16px; "></i> Recibo, 99 Knightsbridge, London
 
-                            <div class="clear"></div>
-                            <div class="gdlr-space" style="margin-top: 13px;"></div>
-
-                            <i class="gdlr-icon fa fa-phone" style="color: #fff; font-size: 16px; "></i> +44-30-3544-7658
-                            <div class="clear"></div>
-                            <div class="gdlr-space" style="margin-top: 13px;"></div>
-
-                            <i class="gdlr-icon fa fa-mobile" style="color: #fff; font-size: 20px; "></i> +44-30-3874-7658
-
-                            <div class="clear"></div>
-                            <div class="gdlr-space" style="margin-top: 13px;"></div>
-
-                            <i class="gdlr-icon fa fa-envelope-o" style="color: #fff; font-size: 16px; "></i> reservation@reciborestaurant.com
-
-                            <div class="clear"></div>
-                            <div class="gdlr-space" style="margin-top: 13px;"></div>
-
-                            <i class="gdlr-icon fa fa-link" style="color: #fff; font-size: 16px; "></i> http://reciborestaurantthemes.com</div>
-                    </div>
-                </div>
-                <div class="footer-column three columns" id="footer-widget-2">
-<!--                    <div id="recent-posts-4" class="widget widget_recent_entries gdlr-item gdlr-widget">-->
-<!--                        <h3 class="gdlr-widget-title">Recent Posts</h3>-->
-<!--                        <div class="clear"></div>-->
-<!--                        <ul>-->
-<!--                            <li>-->
-<!--                                <a href="#">Sem Porta Mollis Parturient</a>-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                <a href="#">Nullam Lorem Mattis Purus</a>-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                <a href="#">Nibh Sem Sit Ullamcorper</a>-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                <a href="#">Donec luctus imperdiet</a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </div>-->
-                </div>
-                <div class="footer-column six columns" id="footer-widget-3">
-                    <div id="text-10" class="widget widget_text gdlr-item gdlr-widget">
-<!--                        <h3 class="gdlr-widget-title">Award Winning</h3>-->
-                        <div class="clear"></div>
-                        <div class="textwidget">
-<!--                          <img src="../../assets/upload/awards.png" alt="" />-->
-                            <div class="clear"></div>
-                            <div class="gdlr-space" style="margin-top: 15px;"></div>
-                            Nullam quis risus eget urna mollis ornare vel eu leo. Vestibulum id ligula porta felis euismod semper. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus.
-                        </div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-            </div>
-
-            <div class="copyright-wrapper">
-                <div class="copyright-container container">
-                    <div class="copyright-left">
-
-						<a href="#" target="_blank">
-							<i class="gdlr-icon fa fa-facebook"></i>
-						</a>
-						<a href="#" target="_blank">
-							<i class="gdlr-icon fa fa-twitter"></i>
-						</a>
-						<a href="#" target="_blank">
-							<i class="gdlr-icon fa fa-linkedin"></i>
-						</a>
-						<a href="#" target="_blank">
-							<i class="gdlr-icon fa fa-google-plus"></i>
-						</a>
-						<a href="#" target="_blank">
-							<i class="gdlr-icon fa fa-pinterest"></i>
-						</a>
-						<a href="#" target="_blank">
-							<i class="gdlr-icon fa fa-flickr"></i>
-						</a>
-
-                    </div>
-                    <div class="copyright-right">
-                        Copyright 2019 max-themes. All Right Revered.
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </div>
-        </footer>
 
 
 
@@ -647,5 +364,4 @@
     <script type="text/javascript" src="../../assets/plugins/quform/js/../../assets/plugins.js"></script>
     <script type="text/javascript" src="../../assets/plugins/quform/js/scripts.js"></script>
 
-</body>
 </html>
