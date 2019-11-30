@@ -115,7 +115,6 @@ app-navigation-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: right;
 }
 
 app-navigation-bar h1 {

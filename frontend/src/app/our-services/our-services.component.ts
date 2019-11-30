@@ -1,4 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-our-services',
@@ -6,7 +7,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./our-services.component.css']
 })
 export class OurServicesComponent implements OnInit {
-
+    show: boolean;
     count: string;
 // imageList: Array<Image> = [];
 imageList = [
@@ -38,9 +39,13 @@ ingredientsFormArray: Array<any> = [];
   userSearch(ingredients) {
     window.alert('hello from the other side 1' + JSON.stringify(ingredients));
      this.valueChange.emit(JSON.stringify(ingredients));
+     this.show = true;
  }
-
-  constructor() { }
+SeeMore() {
+  //  window.alert('hi');
+  this.router.navigateByUrl('search');
+}
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
