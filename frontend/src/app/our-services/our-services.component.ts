@@ -1,7 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {GeneralService} from "../Services/general.service";
-import {Ingredients} from "../Ingredients";
 
 @Component({
   selector: 'app-our-services',
@@ -12,12 +11,13 @@ export class OurServicesComponent implements OnInit {
     show: boolean;
     count: string;
 recipeslist : Array<any> = [];
+ingredientsArr = [];
 // = [
 //     { path: "assets/imgs/Recipe1.jpg", name:"Potato soup", details:"You will love this easy homemade potato soup recipe with potatoes, veggies, garlic, and a creamy." },
 //     { path: "assets/imgs/Recipe2.jpg" , name:"Fahitta", details:"This flavorful recipe is definitely on my weeknight dinner rotation."  },
 //     { path: "assets/imgs/Recipe3.jpg" , name:"Oven baked chicken and rice", details:"Easy oven baked chicken and rice with garlic butter mushrooms mixed through is winner of a chicken dinner!" },
 //     ];
-ingredientsArr: Ingredients[];
+
   @Output() valueChange = new EventEmitter();
 ingredientsFormArray: Array<any> = [];
 
@@ -50,11 +50,12 @@ ingredientsFormArray: Array<any> = [];
 }
   constructor(private router: Router, private API: GeneralService) {}
 
-  ngOnInit() {
-    // get All ingredients using the API
-    this.API.GetIngredients().subscribe((ingredients: Ingredients[]) => {
-      this.ingredientsArr = ingredients;
-    });
+ ngOnInit() {
+
+    this.API.GetIngredients().subscribe((data: any[])=>{
+      console.log(data);
+      this.ingredientsArr = data;
+    })
   }
 
 }

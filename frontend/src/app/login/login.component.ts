@@ -19,6 +19,6 @@ let customer = {email: 'admin@example.com',
       password: 'admin',
       username: 'admin'
     };
-window.alert('hello from the other side' + JSON.stringify(this.sloginAPI.loginAPI(customer)));
+
  }
 }
