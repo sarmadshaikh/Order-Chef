@@ -17,12 +17,15 @@ export class GeneralService {
   constructor(private httpClient: HttpClient) {
   }
 
-public loginAPI(customer: Customer) {
+  public loginAPI(customer: Customer) {
     return this.httpClient.post('http://orderchef.herokuapp.com/rest-auth/login', customer);
-}
+  }
 
   public signUpAPI() {
     return this.httpClient.get('https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}');
   }
-}
 
+  public GetIngredients() {
+    return this.httpClient.get('http://127.0.0.1:8000/apiingredients/');
+  }
+}
