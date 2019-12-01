@@ -39,38 +39,33 @@
 
 <div class="body-wrapper  header-style-1" data-home="index.html">
         <div class="gdlr-page-title-wrapper">
-            <div class="gdlr-page-title-overlay"></div>
-            <div class="gdlr-page-title-container container">
-                <h1 class="gdlr-page-title">What are you looking for?</h1>
-            </div>
+                <h1>What are you looking for?</h1>
         </div>
         <div class="content-wrapper">
             <div class="gdlr-content">
                 <div class="with-sidebar-wrapper">
                   <form #f="ngForm" (ngSubmit)="userSearch(ingredientsFormArray)" >
-                    <h4>Categories</h4>
+                    <h4>Ingredients</h4>
                   <table>
                     <div class="form-check" *ngFor="let ing of ingredientsArr">
 
                     <tr>
-                      <td><input class="form-check-input" (change)="onChange(ing.name, $event.target.checked)" name="{{ ing.name }}" type="checkbox" id="{{ing.name}}"> </td>
-                       <td><label class="form-check-label" for="{{ing.name}}">
+                      <td><input (change)="onChange(ing.name, $event.target.checked)" name="{{ ing.name }}" type="checkbox" id="{{ing.name}}"> </td>
+                       <td style="padding-bottom: 20px"><label class="form-check-label" for="{{ing.name}}">
                         {{ing.name}}
                         </label></td>
                     </tr>
 
                     </div>
                   </table>
-<div><button type="submit">search</button></div>
+                   <br>
+                  <div><button class="btn btn-primary btn-lg" type="submit">search</button></div>
+                </form>
 
-
-</form>
-
-
-
-<div class="container">
-<div class="col-xs-12 col-md-6" *ngIf="show" id="receipes">
-	  <div class="prod-info-main prod-wrap clearfix" *ngFor="let image of imageList">
+        <br><br>
+        <div class="container">
+          <div class="col-xs-12 col-md-6" *ngIf="show" id="receipes">
+	  <div class="prod-info-main prod-wrap clearfix" *ngFor="let image of recipeslist">
 		<div class="row">
 				<div class="col-md-5 col-sm-12 col-xs-12">
 					<div>
@@ -80,8 +75,7 @@
 				<div class="col-md-7 col-sm-12 col-xs-12">
 				<div class="Food-deatil">
 						<h5 class="name" >
-							<a href="#" [text]="image.name" style="color: #0c5460"></a>
-							<a href="#"><span>Food Category</span></a>
+							<a [text]="image.name" style="color: #0c5460"></a>
 						</h5>
 						<span class="tag1"></span>
 				</div>
@@ -91,21 +85,21 @@
 				<div class="Food-info smart-form">
 					<div class="row">
 						<div class="col-md-12">
-                            <a href="javascript:void(0);" (click)="SeeMore()" class="btn btn-info">More info</a>
+              <a href="javascript:void(0);" (click)="SeeMore(image.name)" class="btn btn-info">More info</a>
 						</div>
 
 					</div>
 				</div>
 			</div>
 		</div>
+      <br>
 	</div>
 
 	<!-- end Food -->
 
 <!--</div>-->
 </div>
-
-</div>
+        </div>
 
 
             <div class="recipe_div" style="display:none;">
@@ -334,6 +328,52 @@
             </div>
         </div>
     </div>
+   <footer class="footer-wrapper">
+            <div class="footer-container container">
+                <div class="footer-column three columns" id="footer-widget-1">
+                    <div id="text-5" class="widget widget_text gdlr-item gdlr-widget">
+                        <h3 class="gdlr-widget-title">About Us</h3>
+                        <div class="clear"></div>
+                        <div class="textwidget" style="color: white">Budapest, 1085  Knightsbri, Budapest
+
+                            <div class="clear"></div>
+                            <div class="gdlr-space" style="margin-top: 13px;"></div>
+
+                            +36-30-3544-7658
+                            <div class="clear"></div>
+                            <div class="gdlr-space" style="margin-top: 13px;"></div>
+
+                             order-chef@orderchef.com
+
+                            <div class="clear"></div>
+                            <div class="gdlr-space" style="margin-top: 13px;"></div>
+
+                            http://orderchef.com</div>
+                    </div>
+                </div>
+                <div class="footer-column six columns" id="footer-widget-3">
+                    <div id="text-10" class="widget widget_text gdlr-item gdlr-widget">
+<!--                        <h3 class="gdlr-widget-title">Award Winning</h3>-->
+                        <div class="clear"></div>
+                        <div class="textwidget" style="color: white">
+                            <div class="clear"></div>
+                            <div class="gdlr-space" style="margin-top: 15px;"></div>
+                            Nullam quis risus eget urna mollis ornare vel eu leo. Vestibulum id ligula porta felis euismod semper. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus.
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="copyright-wrapper">
+                <div class="copyright-container container">
+                    <div class="copyright-right" style="color: white">
+                        Copyright 2019 max-themes. All Right Revered.
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </footer>
 </div>
 
 

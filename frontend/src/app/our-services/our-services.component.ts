@@ -1,5 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
+import {GeneralService} from "../Services/general.service";
+import {Ingredients} from "../Ingredients";
 
 @Component({
   selector: 'app-our-services',
@@ -9,24 +11,16 @@ import {Router} from '@angular/router';
 export class OurServicesComponent implements OnInit {
     show: boolean;
     count: string;
-// imageList: Array<Image> = [];
-imageList = [
-    { path: "assets/imgs/Recipe1.jpg", name:"Potato soup", details:"You will love this easy homemade potato soup recipe with potatoes, veggies, garlic, and a creamy." },
-    { path: "assets/imgs/Recipe2.jpg" , name:"Fahitta", details:"This flavorful recipe is definitely on my weeknight dinner rotation."  },
-    { path: "assets/imgs/Recipe3.jpg" , name:"Oven baked chicken and rice", details:"Easy oven baked chicken and rice with garlic butter mushrooms mixed through is winner of a chicken dinner!" },
-    ];
-
+recipeslist : Array<any> = [];
+// = [
+//     { path: "assets/imgs/Recipe1.jpg", name:"Potato soup", details:"You will love this easy homemade potato soup recipe with potatoes, veggies, garlic, and a creamy." },
+//     { path: "assets/imgs/Recipe2.jpg" , name:"Fahitta", details:"This flavorful recipe is definitely on my weeknight dinner rotation."  },
+//     { path: "assets/imgs/Recipe3.jpg" , name:"Oven baked chicken and rice", details:"Easy oven baked chicken and rice with garlic butter mushrooms mixed through is winner of a chicken dinner!" },
+//     ];
+ingredientsArr: Ingredients[];
   @Output() valueChange = new EventEmitter();
 ingredientsFormArray: Array<any> = [];
-  ingredientsArr = [
-    {name : 'ingredient1', id: 1},
-    {name : 'ingredient2', id: 2},
-    {name : 'ingredient3', id: 3},
-    {name : 'ingredient4', id: 4},
-    {name : 'ingredient5', id: 5},
-    {name : 'ingredient6', id: 6},
-    {name : 'ingredient7', id: 7},
-  ];
+
 
   onChange(ingredient: string, isChecked: boolean) {
       if(isChecked) {
@@ -37,17 +31,30 @@ ingredientsFormArray: Array<any> = [];
       }
   }
   userSearch(ingredients) {
-    window.alert('hello from the other side 1' + JSON.stringify(ingredients));
-     this.valueChange.emit(JSON.stringify(ingredients));
-     this.show = true;
+    this.show = false;
+    for(let i = 1; i <= this.ingredientsFormArray.length; i++) {
+       if (ingredients == 'Potato') {
+
+         this.recipeslist.push({
+           path: "assets/imgs/Recipe1.jpg",
+           name: "Potato soup",
+           details: "You will love this easy homemade potato soup recipe with potatoes, veggies, garlic, and a creamy."
+         });
+         this.show = true;
+       }
+     }
  }
-SeeMore() {
-  //  window.alert('hi');
-  this.router.navigateByUrl('search');
+
+  SeeMore(name: string) {
+    this.router.navigate(['search'], {queryParams: {idRec: name}});
 }
-  constructor(private router: Router) { }
+  constructor(private router: Router, private API: GeneralService) {}
 
   ngOnInit() {
+    // get All ingredients using the API
+    this.API.GetIngredients().subscribe((ingredients: Ingredients[]) => {
+      this.ingredientsArr = ingredients;
+    });
   }
 
 }
