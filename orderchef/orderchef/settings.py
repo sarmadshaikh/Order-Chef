@@ -129,6 +129,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 #CORS
+CORS_ORIGIN_ALLOW_ALL = true
 CORS_ORIGIN_WHITELIST = [
     "http://orderchef.herokuapp.com/",
     "http://127.0.0.1:8000",
