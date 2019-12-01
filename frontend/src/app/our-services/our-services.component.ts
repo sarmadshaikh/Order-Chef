@@ -52,10 +52,10 @@ ingredientsFormArray: Array<any> = [];
 
  ngOnInit() {
 
-    this.API.GetIngredients().subscribe((data: any[])=>{
-      console.log(data);
+    this.API.GetIngredients().subscribe((data: any[]) => {
+      // console.log(data);
       this.ingredientsArr = data;
-    })
+    });
   }
 
 }

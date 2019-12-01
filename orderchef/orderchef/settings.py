@@ -41,9 +41,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',  # new!
     'rest_auth',  # new!
+    'corsheaders',  # new!
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -70,6 +72,13 @@ TEMPLATES = [
         },
     },
 ]
+
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = (
+    'http://127.0.0.1:8000',
+    'http://orderchef.herokuapp.com',
+)
 
 WSGI_APPLICATION = 'orderchef.wsgi.application'
 
@@ -129,12 +138,12 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 #CORS
-CORS_ORIGIN_ALLOW_ALL = true
-CORS_ORIGIN_WHITELIST = [
-    "http://orderchef.herokuapp.com/",
-    "http://127.0.0.1:8000",
-    "http://localhost:4200"
-]
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_WHITELIST = [
+#     "http://orderchef.herokuapp.com/",
+#     "http://127.0.0.1:8000",
+#     "http://localhost:4200"
+# ]
 
 CORS_ALLOW_METHODS = [
     'DELETE',
