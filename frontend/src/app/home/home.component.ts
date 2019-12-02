@@ -9,10 +9,10 @@ import {NgbCarousel, NgbSlideEvent, NgbSlideEventSource} from '@ng-bootstrap/ng-
 })
 export class HomeComponent {
    images = [
-    { img: "assets/imgs/Home1.jpg" },
-    { img: "assets/imgs/Home4.jpg" },
-    { img: "assets/imgs/Home5.jpg" },
-     { img: "assets/imgs/Home6.jpg" }
+    { path: "assets/imgs/Home1.jpg" },
+    { path: "assets/imgs/Home4.jpg" },
+    { path: "assets/imgs/Home5.jpg" },
+    { path: "assets/imgs/Home6.jpg" }
   ];
   paused = false;
   unpauseOnArrow = false;
