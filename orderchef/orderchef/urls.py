@@ -17,8 +17,9 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 from rest_api import views
-from rest_api.views import getIngredientsPerRecipe, getRecipesPerIngredients
+from rest_api.views import getIngredientsPerRecipe, getRecipesPerIngredients, getRecipesPerIngredientsV2
 from rest_framework import routers
+from rest_framework.authtoken.views import obtain_auth_token
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
@@ -36,8 +37,11 @@ urlpatterns = [
     # path('ipr/', views.getIngredientsPerRecipe),
     # path('ipr/', views.getIngredientsPerRecipe),
     path('ipr/', getIngredientsPerRecipe.as_view()),
-    path('rpi/', getRecipesPerIngredients.as_view()),
-    path('rest-auth/', include('rest_auth.urls')),
+    path('rpii/', getRecipesPerIngredients.as_view()),
+    path('rpi/', getRecipesPerIngredientsV2.as_view()),
+    # path('rest-auth/', include('rest_auth.urls')),
+    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),  #new
+    # url(r'^api-token-auth/', views.obtain_auth_token),
     path('register/', views.register),
     path('admin', admin.site.urls),
     path('api', include(router.urls)),

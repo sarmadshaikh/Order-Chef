@@ -101,6 +101,7 @@ class RecipesIngredientsViewSet(viewsets.ModelViewSet):
 
 class getIngredientsPerRecipe(generics.ListAPIView):
     serializer_class = RecipesIngredientsSerializer
+
     # queryset = RecipesIngredients.objects.all()
 
     def get_queryset(self):
@@ -114,6 +115,7 @@ class getIngredientsPerRecipe(generics.ListAPIView):
 
 class getRecipesPerIngredients(generics.ListAPIView):
     serializer_class = RecipesIngredientsSerializer
+
     # queryset = RecipesIngredients.objects.all()
 
     def get_queryset(self):
@@ -123,6 +125,22 @@ class getRecipesPerIngredients(generics.ListAPIView):
         if iid:
             # queryset = queryset.filter(recipes_id_id=rid)
             queryset = queryset.filter(ingredients_id_id__in=iid)
+
+        return queryset
+
+
+class getRecipesPerIngredientsV2(generics.ListAPIView):
+    serializer_class = RecipesIngredientsSerializer
+
+    # queryset = RecipesIngredients.objects.all()
+
+    def get_queryset(self):
+        queryset = RecipesIngredients.objects.all()
+        iid = self.request.query_params.get('Ingredients_Ids', '')
+        iid = iid.split(',')
+        if iid:
+            # queryset = queryset.filter(recipes_id_id=rid)
+            queryset = queryset.filter(ingredients_id_id__in=iid).distinct("recipes_id_id")
 
         return queryset
 
