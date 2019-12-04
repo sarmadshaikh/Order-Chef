@@ -210,7 +210,6 @@ p.quform-description {
 .quform-captcha-inner {
 	position: relative;
 	float: left;
-	/*background: url(../images/captcha-refresh-icon.png) no-repeat center center;*/
 }
 .quform-captcha-inner img {
 	max-width: 100%;
