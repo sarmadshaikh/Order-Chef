@@ -124,7 +124,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1.3; margin-bottom: 18px; font-weight: 400
 .gdlr-item-no-space .gdlr-item{ margin: 0px; }
 .gdlr-item.gdlr-main-content { margin-bottom: 55px; }
 .gdlr-item.gdlr-divider-item{ margin-bottom: 50px }
-.section-container, .gdlr-item-start-content, .gdlr-parallax-wrapper, .gdlr-color-wrapper{ padding-top: 50px;  }
+.section-container, .gdlr-item-start-content, .gdlr-parallax-wrapper, .gdlr-color-wrapper{ padding-top: 10px;  }
 .gdlr-color-wrapper, .gdlr-parallax-wrapper, .gdlr-full-size-wrapper{ padding-bottom: 40px; }
 .gdlr-full-size-wrapper .gdlr-item,
 .gdlr-full-size-wrapper .gdlr-item-no-space{ margin-left: 0px; margin-right: 0px; }
