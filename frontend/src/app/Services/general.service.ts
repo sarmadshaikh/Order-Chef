@@ -17,7 +17,7 @@ handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
       // Client-side errors
-      errorMessage = `Error: ${error.error.message}`;;
+      errorMessage = `Error: ${error.error.message}`;
     } else {
       // Server-side errors
       errorMessage =`Error Code: ${error.status}\nMessage: ${error.message}`;
@@ -33,5 +33,12 @@ handleError(error: HttpErrorResponse) {
 
   public GetIngredients() {
     return this.httpClient.get('http://orderchef.herokuapp.com/apiingredients/').pipe(catchError(this.handleError));
+  }
+  public GetRecipesPreIng(ingredientsIDs: string)
+  {
+    return this.httpClient.get('http://orderchef.herokuapp.com/rpi/?Ingredients_Ids=' + ingredientsIDs).pipe(catchError(this.handleError));
+  }
+  public GetRecipeInfo(url: string) {
+    return this.httpClient.get(url).pipe(catchError(this.handleError));
   }
 }

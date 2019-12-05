@@ -1,6 +1,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {GeneralService} from "../Services/general.service";
+import {Ingredients} from "../Ingredients";
+import {Recipes} from "../Recipes";
+
 
 @Component({
   selector: 'app-our-services',
@@ -8,53 +11,53 @@ import {GeneralService} from "../Services/general.service";
   styleUrls: ['./our-services.component.css']
 })
 export class OurServicesComponent implements OnInit {
-    show: boolean;
-    count: string;
-recipeslist : Array<any> = [];
-ingredientsArr = [];
-// = [
-//     { path: "assets/imgs/Recipe1.jpg", name:"Potato soup", details:"You will love this easy homemade potato soup recipe with potatoes, veggies, garlic, and a creamy." },
-//     { path: "assets/imgs/Recipe2.jpg" , name:"Fahitta", details:"This flavorful recipe is definitely on my weeknight dinner rotation."  },
-//     { path: "assets/imgs/Recipe3.jpg" , name:"Oven baked chicken and rice", details:"Easy oven baked chicken and rice with garlic butter mushrooms mixed through is winner of a chicken dinner!" },
-//     ];
-
+  show: boolean;
+  count: string;
+  recipeslist: Array<Recipes> = [];
+  ingredientsArr = [];
+  recipe: object [];
   @Output() valueChange = new EventEmitter();
-ingredientsFormArray: Array<any> = [];
+  ingredientsFormArray: Array<string> = [];
+  public ingredient: Ingredients;
+  ids: string;
 
-
-  onChange(ingredient: string, isChecked: boolean) {
-      if(isChecked) {
-        this.ingredientsFormArray.push(ingredient);
-      } else {
-        const index = this.ingredientsFormArray.indexOf(ingredient);
-        this.ingredientsFormArray.splice(index,1);
-      }
+  onChange(id: string, isChecked: boolean) {
+    if (isChecked) {
+      this.ingredientsFormArray.push(id);
+    } else {
+      const index = this.ingredientsFormArray.indexOf(id);
+      this.ingredientsFormArray.splice(index, 1);
+    }
   }
-  userSearch(ingredients) {
+
+  userSearch(ingredients: Array<string>) {
+    this.ids = '';
     this.show = false;
-    for(let i = 1; i <= this.ingredientsFormArray.length; i++) {
-       if (ingredients == 'Potato') {
+    ingredients.forEach((item) => this.ids += item + ',');
+    this.ids = this.ids.replace(/,\s*$/, '');
 
-         this.recipeslist.push({
-           path: "assets/imgs/Recipe1.jpg",
-           name: "Potato soup",
-           details: "You will love this easy homemade potato soup recipe with potatoes, veggies, garlic, and a creamy."
-         });
-         this.show = true;
-       }
-     }
- }
+    this.API.GetRecipesPreIng(this.ids).subscribe((data: Recipes[]) => {
+      this.show = true;
+      this.recipe = data['results'];
+      for (let i = 0; i < this.recipe .length; i++) {
+        if(!this.recipeslist.some((item) => item.name == this.recipe[i]['recipes_id']['name']))
+          this.recipeslist.push(this.recipe[i]['recipes_id']);
+      }
+    });
+  }
 
-  SeeMore(name: string) {
-    this.router.navigate(['search'], {queryParams: {idRec: name}});
-}
-  constructor(private router: Router, private API: GeneralService) {}
+  SeeMore(ChosenRecipe: string) {
+    this.router.navigate(['search'], {queryParams: {chosenRec: ChosenRecipe }});
+  }
 
- ngOnInit() {
+  constructor(private router: Router, private API: GeneralService) {
+  }
 
-    this.API.GetIngredients().subscribe((data: any[]) => {
+  ngOnInit() {
+
+    this.API.GetIngredients().subscribe((data: Ingredients[]) => {
       // console.log(data);
-      this.ingredientsArr = data;
+      this.ingredientsArr = data['results'];
     });
   }
 

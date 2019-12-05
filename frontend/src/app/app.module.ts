@@ -16,6 +16,7 @@ import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {SearchPageComponent} from './search-page/search-page.component';
 import {NgbAlertModule, NgbCarouselModule, NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {SearchResultsComponent} from './search-results/search-results.component';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {SearchResultsComponent} from './search-results/search-results.component'
     BrowserModule,
     SlickCarouselModule,
     FormsModule,
+    CommonModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
       {path: 'login', component: LoginComponent},

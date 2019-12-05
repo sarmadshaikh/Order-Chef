@@ -1,5 +1,5 @@
 export class Ingredients {
-    ingredient_id: number;
+    ingredient_id: string;
     name: string;
-     calories: string;
+    calories: string;
 }
