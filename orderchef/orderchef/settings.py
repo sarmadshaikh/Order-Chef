@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_api.apps.RestApiConfig',
     'rest_framework',
     'rest_framework.authtoken',  # new!
-    'rest_auth',  # new!
+    # 'rest_auth',  # new!
     'corsheaders',  # new!
 ]
 
@@ -116,7 +116,14 @@ DATABASES = {
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 100,
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',  #new
+    ],
+    # 'DEFAULT_AUTHENTICATION_CLASSES': [
+    #     'rest_framework.authentication.BasicAuthentication',    #new
+    #     'rest_framework.authentication.SessionAuthentication',  #new
+    # ]
 }
 
 # Password validation
