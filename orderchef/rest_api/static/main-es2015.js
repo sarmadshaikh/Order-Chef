@@ -424,19 +424,19 @@ let GeneralService = class GeneralService {
         return this.httpClient.get('https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}');
     }
     GetIngredients() {
-        return this.httpClient.get('http://orderchef.herokuapp.com/apiingredients/').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
+        return this.httpClient.get('https://orderchef.herokuapp.com/apiingredients/').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
     }
     GetRecipesPreIng(ingredientsIDs) {
-        return this.httpClient.get('http://orderchef.herokuapp.com/rpi/?Ingredients_Ids=' + ingredientsIDs).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
+        return this.httpClient.get('https://orderchef.herokuapp.com/rpi/?Ingredients_Ids=' + ingredientsIDs).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
     }
     GetRecipeInfo(url) {
         return this.httpClient.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
     }
     GetRecipeAllIng(id) {
-        return this.httpClient.get('http://orderchef.herokuapp.com/ipr/?recipes_id=' + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
+        return this.httpClient.get('https://orderchef.herokuapp.com/ipr/?recipes_id=' + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
     }
     LogIn(user) {
-        return this.httpClient.post('http://orderchef.herokuapp.com/api-token-auth/', user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
+        return this.httpClient.post('https://orderchef.herokuapp.com/api-token-auth/', user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
     }
 };
 GeneralService.ctorParameters = () => [

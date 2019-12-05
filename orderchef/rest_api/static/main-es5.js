@@ -466,19 +466,19 @@
                     return this.httpClient.get('https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}');
                 };
                 GeneralService.prototype.GetIngredients = function () {
-                    return this.httpClient.get('http://orderchef.herokuapp.com/apiingredients/').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
+                    return this.httpClient.get('https://orderchef.herokuapp.com/apiingredients/').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
                 };
                 GeneralService.prototype.GetRecipesPreIng = function (ingredientsIDs) {
-                    return this.httpClient.get('http://orderchef.herokuapp.com/rpi/?Ingredients_Ids=' + ingredientsIDs).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
+                    return this.httpClient.get('https://orderchef.herokuapp.com/rpi/?Ingredients_Ids=' + ingredientsIDs).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
                 };
                 GeneralService.prototype.GetRecipeInfo = function (url) {
                     return this.httpClient.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
                 };
                 GeneralService.prototype.GetRecipeAllIng = function (id) {
-                    return this.httpClient.get('http://orderchef.herokuapp.com/ipr/?recipes_id=' + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
+                    return this.httpClient.get('https://orderchef.herokuapp.com/ipr/?recipes_id=' + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
                 };
                 GeneralService.prototype.LogIn = function (user) {
-                    return this.httpClient.post('http://orderchef.herokuapp.com/api-token-auth/', user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
+                    return this.httpClient.post('https://orderchef.herokuapp.com/api-token-auth/', user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
                 };
                 return GeneralService;
             }());
