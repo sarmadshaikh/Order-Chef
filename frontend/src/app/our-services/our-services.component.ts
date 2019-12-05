@@ -40,8 +40,9 @@ export class OurServicesComponent implements OnInit {
       this.show = true;
       this.recipe = data['results'];
       for (let i = 0; i < this.recipe .length; i++) {
-        if(!this.recipeslist.some((item) => item.name == this.recipe[i]['recipes_id']['name']))
+        if (!this.recipeslist.some((item) => item.name == this.recipe[i]['recipes_id']['name'])) {
           this.recipeslist.push(this.recipe[i]['recipes_id']);
+        }
       }
     });
   }

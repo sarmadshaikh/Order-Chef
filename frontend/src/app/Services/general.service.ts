@@ -41,4 +41,7 @@ handleError(error: HttpErrorResponse) {
   public GetRecipeInfo(url: string) {
     return this.httpClient.get(url).pipe(catchError(this.handleError));
   }
+  public GetRecipeAllIng(id: string) {
+    return this.httpClient.get('http://orderchef.herokuapp.com/ipr/?recipes_id=' + id).pipe(catchError(this.handleError));
+  }
 }

@@ -9,4 +9,5 @@ export class Recipes {
     cuisine: string;
     url: string;
     totalTime: number;
+    recipe_id: string;
 }

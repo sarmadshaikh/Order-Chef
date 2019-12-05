@@ -13,6 +13,9 @@ export class SearchPageComponent implements OnInit {
   Recipe: Recipes;
   receivedUrl: string;
   DirectionsList: string[];
+  RecipeIngs: object [];
+  ingredients: Array<string> = [];
+   RecipeIngsTemp: object ;
 
   constructor(private activatedRoute: ActivatedRoute, private API: GeneralService) {
   }
@@ -31,7 +34,14 @@ export class SearchPageComponent implements OnInit {
       this.API.GetRecipeInfo(this.receivedUrl).subscribe((data: Recipes) => {
         this.Recipe = data;
         this.directions(this.Recipe.directions);
-      });
+        this.API.GetRecipeAllIng(this.Recipe.recipe_id).subscribe((data: Recipes[]) => {
+      this.RecipeIngs = data['results'];
+      for (let i = 0; i < this.RecipeIngs.length; i++) {
+          this.RecipeIngsTemp = this.RecipeIngs[i]['ingredients_id'];
+          this.ingredients.push(this.RecipeIngsTemp['name']);
+      }
+    });
+    });
     });
   }
 

@@ -55,14 +55,10 @@
                                                 <div class="gdlr-single-menu-content">
                                                     <h4>Directions</h4>
                                                   <table>
-                                                    <tr *ngFor="let hero of DirectionsList">
-                                                          <td>{{hero}}</td>
+                                                    <tr *ngFor="let direction of DirectionsList">
+                                                          <td>{{direction}}</td>
                                                       </tr>
                                                   </table>
-
-<!--                                                    <ol *ngfor="let step of DirectionsList">-->
-<!--                                                        <li><label> {{step}}</label></li>-->
-<!--                                                    </ol>-->
                                                 </div>
                                             </div>
                                             <div class="clear"></div>
@@ -94,16 +90,11 @@
                                             <div class="gdlr-menu-ingredients">
                                                 <h3 class="gdlr-menu-ingredients-title">Ingredients</h3>
                                                 <div class="gdlr-menu-ingredients-content">
-                                                    <ul>
-                                                        <li>1 pound sweet Italian sausage</li>
-                                                        <li>3/4 pound lean ground beef</li>
-                                                        <li>2 cloves garlic, crushedt</li>
-                                                        <li>1 (28 ounce) can crushed tomatoes</li>
-                                                        <li>2 (6 ounce) cans tomato paste</li>
-                                                        <li>1/2 cup pesto sauce</li>
-                                                        <li>1 large tomato, chopped/li>
-                                                            <li>2 teaspoons dried oregano</li>
-                                                    </ul>
+                                                    <table>
+                                                    <tr *ngFor="let ing of ingredients">
+                                                          <td>{{ing}}</td>
+                                                      </tr>
+                                                  </table>
                                                 </div>
                                             </div>
                                         </div>
