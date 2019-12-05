@@ -230,8 +230,9 @@ img.gdlr-full-boxed-background{ min-height: 100%; min-width: 1024px;
 
 .gdlr-navigation-gimmick { position: absolute; height: 2px; top: 54px; }
 
-.gdlr-page-title-wrapper { padding: 20px 0px 60px; position: relative; z-index: 89; text-align: center; line-height: 1;
-	background-image: url('../images/page-title-background.jpg'); background-repeat: repeat; background-position: center; }
+.gdlr-page-title-wrapper { padding: 20px 0px 60px; position: relative; z-index: 89; text-align: center; line-height: 1}
+/*;*/
+/*	background-image: url('../../assets/images/page-title-background.jpg'); background-repeat: repeat; background-position: center; */
 .gdlr-page-title-wrapper .gdlr-page-title-overlay{ position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px;
 	background: #000; opacity: 0.2; filter: alpha(opacity=20); }
 .gdlr-page-title-wrapper .gdlr-page-title-container{ position: relative; }
