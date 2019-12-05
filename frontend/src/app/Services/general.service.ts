@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 
 import {throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {Customer} from "../customer";
 
 
 @Injectable({
@@ -43,5 +44,8 @@ handleError(error: HttpErrorResponse) {
   }
   public GetRecipeAllIng(id: string) {
     return this.httpClient.get('http://orderchef.herokuapp.com/ipr/?recipes_id=' + id).pipe(catchError(this.handleError));
+  }
+  public LogIn(user: Customer) {
+    return this.httpClient.post('http://orderchef.herokuapp.com/api-token-auth/', user).pipe(catchError(this.handleError));
   }
 }

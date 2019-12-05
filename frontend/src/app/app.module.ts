@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {NavigationBarComponent} from './navigation-bar/navigation-bar.component';
 import {OurServicesComponent} from './our-services/our-services.component';
@@ -49,8 +49,9 @@ import {CommonModule} from '@angular/common';
       {path: 'search-result', component: SearchResultsComponent}
     ]),
     NgbCarouselModule,
-       NgbPaginationModule,
-    NgbAlertModule
+    NgbPaginationModule,
+    NgbAlertModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

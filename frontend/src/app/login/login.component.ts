@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-
+import {Customer} from '../customer';
 import {GeneralService} from '../Services/general.service';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -9,16 +11,45 @@ import {GeneralService} from '../Services/general.service';
 })
 export class LoginComponent implements OnInit {
   myForm: any;
-  constructor( private sloginAPI: GeneralService) { }
+  userCred: Customer;
+  token: string;
+  loginForm: FormGroup;
+  loading = false;
+  submitted = false;
+  error: string;
 
-  ngOnInit() {
+  constructor(private API: GeneralService, private formBuilder: FormBuilder, private router: Router) {
   }
 
- userLogin(username, email, password) {
-let customer = {email: 'admin@example.com',
-      password: 'admin',
-      username: 'admin'
-    };
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
 
- }
+  get f() {
+    return this.loginForm.controls;
+  }
+
+  userLogin() {
+    this.submitted = true;
+    this.userCred = {
+      username: this.f.username.value,
+      password: this.f.password.value
+    };
+    if (this.loginForm.invalid) {
+      return;
+    }
+    this.loading = true;
+    this.API.LogIn(this.userCred).subscribe((token: string) => {
+        this.token = token['token'];
+        //window.alert(this.token);
+        this.router.navigate(['/']);
+      },
+      error => {
+        this.error = 'Username or password is not correct';
+        this.loading = false;
+      });
+  }
 }
