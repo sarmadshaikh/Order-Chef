@@ -1,3 +1,4 @@
+from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User, Group
 from rest_api.models import Allergy, Cuisine, Ingredient, Location, Recipe, RecipesIngredients
 from rest_framework import serializers
@@ -71,6 +72,7 @@ class RegistrationSerializer(serializers.Serializer):
         """
         Create and return a new `Snippet` instance, given the validated data.
         """
+        validated_data['password'] = make_password(validated_data['password'])
         return User.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
