@@ -1,39 +1,42 @@
-<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-    <form class="form-signin" #f="ngForm" (ngSubmit)="userSignin(f.value)">
-        <div >
-	        <h3 class="form-signin-heading">Sign UP</h3>
-	        <p>Please fill in this form to create an account.</p>
-
-          <label for="inputFname" class="sr-only">First Name</label>
-          <input type="text" id="inputFname" name="fname" ngModel class="form-control" placeholder="First Name" required autofocus>
+<body>
+<span style="margin-top: 50px"></span>
+<div class="container">
+    <form method="post" class="form-signin" [formGroup]="signUpForm" (ngSubmit)="userSignin()">
+        <div [formGroup]="signUpForm">
+          <label for="firstName">First Name</label>
+          <input type="text" id="inputFname" formControlName="firstName" class="form-control" placeholder="First Name">
+          <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+          </div>
+        </div>
           <br> <br>
-          <label for="inputLname" class="sr-only">Last Name</label>
-                <input type="text" id="inputLname" name="lname" ngModel class="form-control" placeholder="Last Name" required autofocus>
+        <div [formGroup]="signUpForm">
+          <label for="lastName" >Last Name</label>
+          <input type="text" id="inputLname" formControlName="lastName" class="form-control" placeholder="Last Name">
+        </div>
           <br> <br>
-          <label for="inputEmail" class="sr-only">Email</label>
-                <input type="email" id="inputEmail" name="email" ngModel class="form-control" placeholder="Email" required autofocus>
+        <div [formGroup]="signUpForm">
+          <label for="email" >Email</label>
+          <input type="email" id="inputEmail" formControlName="email" class="form-control" placeholder="Email">
+        </div>
           <br> <br>
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input type="password" id="inputPassword" name="password" ngModel class="form-control" placeholder="Password" required>
+        <div [formGroup]="signUpForm">
+          <label for="username" >Username</label>
+          <input type="text" id="inputUsername" formControlName="username" class="form-control" placeholder="Username">
+        </div>
           <br> <br>
-          <label for="inputCPassword" class="sr-only">Confirm Password</label>
-                <input type="password" id="inputCPassword" name="password" ngModel class="form-control" placeholder="Confirm Password" required>
+        <div [formGroup]="signUpForm">
+          <label for="password" >Password</label>
+          <input type="password" id="inputPassword" formControlName="password" class="form-control" placeholder="Password">
+        </div>
           <br> <br>
-          <label for="inputNat" class="sr-only">Nationality</label>
-          <input type="text" id="inputNat" name="nat" ngModel class="form-control" placeholder="Nationality" required autofocus>
+        <div [formGroup]="signUpForm">
+          <label for="cnfPassword" >Confirm Password</label>
+          <input type="password" id="inputCPassword" formControlName="cnfPassword" class="form-control" placeholder="Confirm Password">
+        </div>
           <br> <br>
-          <label for="inputBdate" class="sr-only">Date of Birth</label>
-                <input type="date" id="inputBdate" name="bdate" ngModel class="form-control" placeholder="Date of Birth" required autofocus>
           <br> <br>
-
-          <br />
           <button class="btn btn-lg btn-primary btn-block" type="submit">Sign UP</button>
-      </div>
     </form>
-</html>
+  </div>
+</body>
