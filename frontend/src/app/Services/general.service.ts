@@ -4,6 +4,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Customer} from "../customer";
+import {NewUser} from "../sign-up/sign-up.component";
 
 
 @Injectable({
@@ -28,24 +29,24 @@ handleError(error: HttpErrorResponse) {
   }
 
 
-  public signUpAPI() {
-    return this.httpClient.get('https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}');
+  public signUpAPI(newUser: NewUser) {
+    return this.httpClient.post('https://orderchef.herokuapp.com/register/', newUser).pipe(catchError(this.handleError));
   }
 
   public GetIngredients() {
-    return this.httpClient.get('http://orderchef.herokuapp.com/apiingredients/').pipe(catchError(this.handleError));
+    return this.httpClient.get('https://orderchef.herokuapp.com/apiingredients/').pipe(catchError(this.handleError));
   }
   public GetRecipesPreIng(ingredientsIDs: string)
   {
-    return this.httpClient.get('http://orderchef.herokuapp.com/rpi/?Ingredients_Ids=' + ingredientsIDs).pipe(catchError(this.handleError));
+    return this.httpClient.get('https://orderchef.herokuapp.com/rpi/?Ingredients_Ids=' + ingredientsIDs).pipe(catchError(this.handleError));
   }
   public GetRecipeInfo(url: string) {
     return this.httpClient.get(url).pipe(catchError(this.handleError));
   }
   public GetRecipeAllIng(id: string) {
-    return this.httpClient.get('http://orderchef.herokuapp.com/ipr/?recipes_id=' + id).pipe(catchError(this.handleError));
+    return this.httpClient.get('https://orderchef.herokuapp.com/ipr/?recipes_id=' + id).pipe(catchError(this.handleError));
   }
   public LogIn(user: Customer) {
-    return this.httpClient.post('http://orderchef.herokuapp.com/api-token-auth/', user).pipe(catchError(this.handleError));
+    return this.httpClient.post('https://orderchef.herokuapp.com/api-token-auth/', user).pipe(catchError(this.handleError));
   }
 }
