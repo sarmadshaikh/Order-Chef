@@ -36,8 +36,7 @@ handleError(error: HttpErrorResponse) {
   public GetIngredients() {
     return this.httpClient.get('https://orderchef.herokuapp.com/apiingredients/').pipe(catchError(this.handleError));
   }
-  public GetRecipesPreIng(ingredientsIDs: string)
-  {
+  public GetRecipesPreIng(ingredientsIDs: string) {
     return this.httpClient.get('https://orderchef.herokuapp.com/rpi/?Ingredients_Ids=' + ingredientsIDs).pipe(catchError(this.handleError));
   }
   public GetRecipeInfo(url: string) {
