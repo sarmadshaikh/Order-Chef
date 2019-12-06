@@ -11,18 +11,34 @@ export class NavigationBarComponent implements OnInit {
   }
 
   validUser: boolean;
+  username: string;
 
   ngOnInit() {
-    this.validUser = true;
+    this.validUser = this.validUser2();
+    this.username = localStorage.getItem('username');
     // if (token)
     //   this.validUser=true;
     // else
     //   this.validUser=false;
+
+  }
+
+   validUser2() {
+    if (!(localStorage.getItem('isLoggedin') === 'true')) {
+          this.router.navigate(['/login']);
+          return false;
+    } else {
+          return true;
+    }
   }
 
   logout() {
-    //token=null;
-    this.validUser = false;
+    // token=null;
+
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('username');
+    localStorage.setItem('isLoggedin', 'false');
+    this.validUser = this.validUser2();
     this.router.navigate(['/login']);
   }
 }

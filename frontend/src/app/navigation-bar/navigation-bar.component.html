@@ -53,7 +53,7 @@
                                     <li class="menu-itemmenu-item gdlr-normal-menu"><a [routerLink]="['/ourservices']" class="nav-link">Search</a></li>
                                     <li class="menu-item"><a [routerLink]="['/aboutus']" class="nav-link" >About</a></li>
                                     <li class="menu-item"><a [routerLink]="['/contactus']"  class="nav-link" >Contact Us</a></li>
-                                    <li class="menu-item"><a (click)="logout()"  class="nav-link" >Log out</a></li>
+                                    <li class="menu-item"><a (click)="logout()"  class="nav-link" >Log out</a><b>{{this.username}}</b></li>
                                 </ul>
                                 <div class="gdlr-menu-search" id="gdlr-menu-search">
                                     <form method="get" id="searchform" action="#">
