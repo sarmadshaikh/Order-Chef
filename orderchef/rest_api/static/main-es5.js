@@ -127,7 +127,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<!DOCTYPE html>\n\n<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\">\n<head>\n    <meta charset=\"utf-8\" />\n    <title></title>\n</head>\n    <form class=\"form-signin\" #f=\"ngForm\" (ngSubmit)=\"userSignin(f.value)\">\n        <div >\n\t        <h3 class=\"form-signin-heading\">Sign UP</h3>\n\t        <p>Please fill in this form to create an account.</p>\n\n          <label for=\"inputFname\" class=\"sr-only\">First Name</label>\n          <input type=\"text\" id=\"inputFname\" name=\"fname\" ngModel class=\"form-control\" placeholder=\"First Name\" required autofocus>\n          <br> <br>\n          <label for=\"inputLname\" class=\"sr-only\">Last Name</label>\n                <input type=\"text\" id=\"inputLname\" name=\"lname\" ngModel class=\"form-control\" placeholder=\"Last Name\" required autofocus>\n          <br> <br>\n          <label for=\"inputEmail\" class=\"sr-only\">Email</label>\n                <input type=\"email\" id=\"inputEmail\" name=\"email\" ngModel class=\"form-control\" placeholder=\"Email\" required autofocus>\n          <br> <br>\n          <label for=\"inputPassword\" class=\"sr-only\">Password</label>\n          <input type=\"password\" id=\"inputPassword\" name=\"password\" ngModel class=\"form-control\" placeholder=\"Password\" required>\n          <br> <br>\n          <label for=\"inputCPassword\" class=\"sr-only\">Confirm Password</label>\n                <input type=\"password\" id=\"inputCPassword\" name=\"password\" ngModel class=\"form-control\" placeholder=\"Confirm Password\" required>\n          <br> <br>\n          <label for=\"inputNat\" class=\"sr-only\">Nationality</label>\n          <input type=\"text\" id=\"inputNat\" name=\"nat\" ngModel class=\"form-control\" placeholder=\"Nationality\" required autofocus>\n          <br> <br>\n          <label for=\"inputBdate\" class=\"sr-only\">Date of Birth</label>\n                <input type=\"date\" id=\"inputBdate\" name=\"bdate\" ngModel class=\"form-control\" placeholder=\"Date of Birth\" required autofocus>\n          <br> <br>\n\n          <br />\n          <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Sign UP</button>\n      </div>\n    </form>\n</html>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<body>\n<br>\n<br>\n<br>\n<br>\n<br>\n<div class=\"container\">\n    <form method=\"post\" class=\"form-signin\" [formGroup]=\"signUpForm\" (ngSubmit)=\"userSignin()\">\n        <div [formGroup]=\"signUpForm\">\n          <label for=\"firstName\">First Name</label>\n          <input type=\"text\" id=\"inputFname\" formControlName=\"firstName\" class=\"form-control\" placeholder=\"First Name\">\n          <div *ngIf=\"submitted && f.firstName.errors\" class=\"invalid-feedback\">\n            <div *ngIf=\"f.firstName.errors.required\">First Name is required</div>\n          </div>\n        </div>\n          <br> <br>\n        <div [formGroup]=\"signUpForm\">\n          <label for=\"lastName\" >Last Name</label>\n          <input type=\"text\" id=\"inputLname\" formControlName=\"lastName\" class=\"form-control\" placeholder=\"Last Name\">\n        </div>\n          <br> <br>\n        <div [formGroup]=\"signUpForm\">\n          <label for=\"email\" >Email</label>\n          <input type=\"email\" id=\"inputEmail\" formControlName=\"email\" class=\"form-control\" placeholder=\"Email\">\n        </div>\n          <br> <br>\n        <div [formGroup]=\"signUpForm\">\n          <label for=\"username\" >Username</label>\n          <input type=\"text\" id=\"inputUsername\" formControlName=\"username\" class=\"form-control\" placeholder=\"Username\">\n        </div>\n          <br> <br>\n        <div [formGroup]=\"signUpForm\">\n          <label for=\"password\" >Password</label>\n          <input type=\"password\" id=\"inputPassword\" formControlName=\"password\" class=\"form-control\" placeholder=\"Password\">\n        </div>\n          <br> <br>\n        <div [formGroup]=\"signUpForm\">\n          <label for=\"cnfPassword\" >Confirm Password</label>\n          <input type=\"password\" id=\"inputCPassword\" formControlName=\"cnfPassword\" class=\"form-control\" placeholder=\"Confirm Password\">\n        </div>\n          <br> <br>\n          <br> <br>\n          <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Sign UP</button>\n    </form>\n  </div>\n</body>\n");
             /***/ 
         }),
         /***/ "./node_modules/tslib/tslib.es6.js": 
@@ -462,8 +462,8 @@
                     // window.alert(errorMessage);
                     return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(errorMessage);
                 };
-                GeneralService.prototype.signUpAPI = function () {
-                    return this.httpClient.get('https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${this.API_KEY}');
+                GeneralService.prototype.signUpAPI = function (newUser) {
+                    return this.httpClient.post('https://orderchef.herokuapp.com/register/', newUser).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
                 };
                 GeneralService.prototype.GetIngredients = function () {
                     return this.httpClient.get('https://orderchef.herokuapp.com/apiingredients/').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
@@ -853,7 +853,7 @@
                     this.router = router;
                 }
                 NavigationBarComponent.prototype.ngOnInit = function () {
-                    this.validUser = true;
+                    // this.validUser = false;
                     // if (token)
                     //   this.validUser=true;
                     // else
@@ -1109,23 +1109,72 @@
         /*!**********************************************!*\
           !*** ./src/app/sign-up/sign-up.component.ts ***!
           \**********************************************/
-        /*! exports provided: SignUpComponent */
+        /*! exports provided: SignUpComponent, NewUser */
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SignUpComponent", function () { return SignUpComponent; });
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewUser", function () { return NewUser; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _Services_general_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Services/general.service */ "./src/app/Services/general.service.ts");
+            /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
             var SignUpComponent = /** @class */ (function () {
-                function SignUpComponent() {
+                function SignUpComponent(API, formBuilder, router) {
+                    this.API = API;
+                    this.formBuilder = formBuilder;
+                    this.router = router;
+                    // loading = false;
+                    this.submitted = false;
                 }
                 SignUpComponent.prototype.ngOnInit = function () {
+                    this.signUpForm = this.formBuilder.group({
+                        firstName: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+                        lastName: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+                        email: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+                        username: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+                        password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+                        cnfPassword: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
+                    });
                 };
-                SignUpComponent.prototype.userSignin = function (email) {
-                    window.alert('hello from the other side' + JSON.stringify(email));
+                Object.defineProperty(SignUpComponent.prototype, "f", {
+                    get: function () {
+                        return this.signUpForm.controls;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                SignUpComponent.prototype.userSignin = function () {
+                    var _this = this;
+                    this.submitted = true;
+                    if (this.signUpForm.invalid) {
+                        return;
+                    }
+                    if (this.f.password.value !== this.f.cnfPassword.value) {
+                        return alert('Passwords should match');
+                    }
+                    this.newUser = {
+                        first_name: this.f.firstName.value,
+                        last_name: this.f.lastName.value,
+                        email: this.f.email.value,
+                        username: this.f.username.value,
+                        password: this.f.password.value
+                    };
+                    this.API.signUpAPI(this.newUser).subscribe(function () {
+                        alert('User registration successful');
+                        _this.router.navigate(['/']);
+                    }, function (error) {
+                        _this.error = 'Unable to register user. Please enter valid details';
+                    });
                 };
                 return SignUpComponent;
             }());
+            SignUpComponent.ctorParameters = function () { return [
+                { type: _Services_general_service__WEBPACK_IMPORTED_MODULE_2__["GeneralService"] },
+                { type: _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormBuilder"] },
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
+            ]; };
             SignUpComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-sign-up',
@@ -1133,6 +1182,11 @@
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./sign-up.component.css */ "./src/app/sign-up/sign-up.component.css")).default]
                 })
             ], SignUpComponent);
+            var NewUser = /** @class */ (function () {
+                function NewUser() {
+                }
+                return NewUser;
+            }());
             /***/ 
         }),
         /***/ "./src/environments/environment.ts": 
