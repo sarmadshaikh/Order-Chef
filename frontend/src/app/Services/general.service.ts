@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 import {throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-import {Customer} from "../customer";
-import {NewUser} from "../sign-up/sign-up.component";
+import {Customer} from '../customer';
+// @ts-ignore
+import {NewUser} from '../sign-up/sign-up.component';
 
 
 @Injectable({
@@ -16,13 +17,13 @@ export class GeneralService {
   constructor(private httpClient: HttpClient) {
   }
 handleError(error: HttpErrorResponse) {
-    let errorMessage = 'Unknown error!';
+    let errorMessage: string;
     if (error.error instanceof ErrorEvent) {
       // Client-side errors
       errorMessage = `Error: ${error.error.message}`;
     } else {
       // Server-side errors
-      errorMessage =`Error Code: ${error.status}\nMessage: ${error.message}`;
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     // window.alert(errorMessage);
     return throwError(errorMessage);

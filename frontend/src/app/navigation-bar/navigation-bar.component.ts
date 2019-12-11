@@ -16,11 +16,6 @@ export class NavigationBarComponent implements OnInit {
   ngOnInit() {
     this.validUser = this.validUser2();
     this.username = localStorage.getItem('username');
-    // if (token)
-    //   this.validUser=true;
-    // else
-    //   this.validUser=false;
-
   }
 
    validUser2() {
@@ -39,6 +34,6 @@ export class NavigationBarComponent implements OnInit {
     localStorage.removeItem('username');
     localStorage.setItem('isLoggedin', 'false');
     this.validUser = this.validUser2();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 }

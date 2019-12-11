@@ -18,15 +18,19 @@ export class OurServicesComponent implements OnInit {
   recipe: object [];
   @Output() valueChange = new EventEmitter();
   ingredientsFormArray: Array<string> = [];
+  ingredientsNameArray: Array<string> = [];
   public ingredient: Ingredients;
   ids: string;
+  ingnames: string;
 
-  onChange(id: string, isChecked: boolean) {
+  onChange(id: string, isChecked: boolean, ingName: string) {
     if (isChecked) {
       this.ingredientsFormArray.push(id);
+      this.ingredientsNameArray.push(ingName);
     } else {
       const index = this.ingredientsFormArray.indexOf(id);
       this.ingredientsFormArray.splice(index, 1);
+      this.ingredientsNameArray.splice(index, 1);
     }
   }
 
@@ -35,7 +39,6 @@ export class OurServicesComponent implements OnInit {
     this.show = false;
     ingredients.forEach((item) => this.ids += item + ',');
     this.ids = this.ids.replace(/,\s*$/, '');
-
     this.API.GetRecipesPreIng(this.ids).subscribe((data: Recipes[]) => {
       this.show = true;
       this.recipe = data['results'];
@@ -47,8 +50,10 @@ export class OurServicesComponent implements OnInit {
     });
   }
 
-  SeeMore(ChosenRecipe: string) {
-    this.router.navigate(['search'], {queryParams: {chosenRec: ChosenRecipe }});
+  SeeMore(ChosenRecipe: string ) {
+        this.ingnames = '';
+        this.ingredientsNameArray.forEach((item) => this.ingnames += item + ',');
+        this.router.navigate(['search'], {queryParams: {chosenRec: ChosenRecipe, chosenIng: this.ingnames }});
   }
 
   constructor(private router: Router, private API: GeneralService) {

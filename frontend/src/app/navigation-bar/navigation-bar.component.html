@@ -48,47 +48,28 @@
                         <div class="gdlr-navigation-wrapper" *ngIf="validUser">
                             <nav class="gdlr-navigation" id="gdlr-main-navigation" role="navigation">
                                 <ul id="menu-main-menu-1" class="sf-menu gdlr-main-menu">
-                                  <li class="menu-item menu-item-home current-menu-item gdlr-normal-menu" style="alignment:revert; padding-right:350px"><a [routerLink]="['/']" class="navbar-brand"><h3 style="color: white">Order Chef</h3></a></li>
+                                  <li class="menu-item menu-item-home current-menu-item gdlr-normal-menu" style="alignment:revert; padding-right:300px"><a [routerLink]="['/']" class="navbar-brand"><h3 style="color: white">Order Chef</h3></a></li>
                                     <li class="menu-item menu-item-home current-menu-item gdlr-normal-menu"><a [routerLink]="['/']" class="navbar-brand">Home</a></li>
                                     <li class="menu-itemmenu-item gdlr-normal-menu"><a [routerLink]="['/ourservices']" class="nav-link">Search</a></li>
                                     <li class="menu-item"><a [routerLink]="['/aboutus']" class="nav-link" >About</a></li>
                                     <li class="menu-item"><a [routerLink]="['/contactus']"  class="nav-link" >Contact Us</a></li>
-                                    <li class="menu-item"><a (click)="logout()"  class="nav-link" >Log out</a><b>{{this.username}}</b></li>
+                                    <li class="menu-item"><a (click)="logout()"  class="nav-link" >Log out</a></li>
+                                    <li class="menu-item"><a [routerLink]="['/']" class="navbar-brand">{{this.username}}</a></li>
                                 </ul>
-                                <div class="gdlr-menu-search" id="gdlr-menu-search">
-                                    <form method="get" id="searchform" action="#">
-                                        <div class="search-text">
-                                            <input type="text" value="Type Keywords" name="s" autocomplete="off" data-default="Type Keywords" />
-                                        </div>
-                                        <input type="submit" value="" />
-                                        <div class="clear"></div>
-                                    </form>
-                                </div>
-
                             </nav>
-                            <div class="gdlr-navigation-gimmick" id="gdlr-navigation-gimmick"></div>
+                            <div class="gdlr-navigation-gimmick" id="gdlr-navigation-gimmick1"></div>
                             <div class="clear"></div>
                         </div>
 
                       <div class="gdlr-navigation-wrapper" *ngIf="!validUser">
-                            <nav class="gdlr-navigation" id="gdlr-main-navigation" role="navigation">
-                                <ul id="menu-main-menu-1" class="sf-menu gdlr-main-menu">
-                                  <li class="menu-item menu-item-home current-menu-item gdlr-normal-menu" style="alignment:revert; padding-right:350px"><a [routerLink]="['/']" class="navbar-brand"><h3 style="color: white">Order Chef</h3></a></li>
+                            <nav class="gdlr-navigation" id="gdlr-main-navigation2" role="navigation">
+                                <ul id="menu-main-menu-2" class="sf-menu gdlr-main-menu">
+                                  <li class="menu-item menu-item-home current-menu-item gdlr-normal-menu" style="alignment:revert; padding-right:550px"><a [routerLink]="['/']" class="navbar-brand"><h3 style="color: white">Order Chef</h3></a></li>
                                     <li class="menu-item menu-item-home current-menu-item gdlr-normal-menu"><a [routerLink]="['/']" class="navbar-brand">Home</a></li>
                                     <li class="menu-item"><a [routerLink]="['/aboutus']" class="nav-link" >About</a></li>
                                     <li class="menu-item"><a [routerLink]="['/login']"  class="nav-link" >Log in</a></li>
                                     <li class="menu-item"><a [routerLink]="['/signup']"  class="nav-link" >Sign up</a></li>
                                 </ul>
-                                <div class="gdlr-menu-search" id="gdlr-menu-search">
-                                    <form method="get" id="searchform" action="#">
-                                        <div class="search-text">
-                                            <input type="text" value="Type Keywords" name="s" autocomplete="off" data-default="Type Keywords" />
-                                        </div>
-                                        <input type="submit" value="" />
-                                        <div class="clear"></div>
-                                    </form>
-                                </div>
-
                             </nav>
                             <div class="gdlr-navigation-gimmick" id="gdlr-navigation-gimmick"></div>
                             <div class="clear"></div>

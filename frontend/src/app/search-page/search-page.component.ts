@@ -15,7 +15,9 @@ export class SearchPageComponent implements OnInit {
   DirectionsList: string[];
   RecipeIngs: object [];
   ingredients: Array<string> = [];
-   RecipeIngsTemp: object ;
+  choseningredients: string;
+  choseningredientsarr: Array<string> = [];
+  RecipeIngsTemp: object ;
 
   constructor(private activatedRoute: ActivatedRoute, private API: GeneralService) {
   }
@@ -27,10 +29,24 @@ export class SearchPageComponent implements OnInit {
       this.DirectionsList.splice(index, 1);
     }
   }
+  exist(ingname: string) {
+    for (let i = 0; i < this.choseningredientsarr .length; i++) {
+        if (ingname === this.choseningredientsarr[i]) {
+          return true;
+        }
+      }
+  }
 
   ngOnInit() {
+
     this.activatedRoute.queryParams.subscribe((params) => {
       this.receivedUrl = params['chosenRec'];
+      this.choseningredients = params['chosenIng'];
+      this.choseningredientsarr = this.choseningredients.split(',');
+      const index: number = this.choseningredientsarr.indexOf('');
+      if (index !== -1) {
+       this.choseningredientsarr.splice(index, 1);
+       }
       this.API.GetRecipeInfo(this.receivedUrl).subscribe((data: Recipes) => {
         this.Recipe = data;
         this.directions(this.Recipe.directions);

@@ -44,8 +44,6 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.API.LogIn(this.userCred).subscribe((token: string) => {
         this.token = token['token'];
-        // window.alert(this.token);
-       // console.log(this.token);
         localStorage.setItem('access_token', this.token);
         localStorage.setItem('isLoggedin', 'true');
         localStorage.setItem('username', this.userCred.username);

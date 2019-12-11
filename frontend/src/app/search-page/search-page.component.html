@@ -73,7 +73,7 @@
                                                 <h3 class="gdlr-menu-title">{{Recipe.name}}</h3>
                                                 <div class="gdlr-single-menu-sub-info">
                                                     <div class="gdlr-single-menu-time">
-                                                        <div class="menu-info menu-total-time"><span class="gdlr-head">Total Time</span> {{Recipe.prep_time_min + Recipe.cook_time_min}}</div>
+                                                        <div class="menu-info menu-total-time"><span class="gdlr-head">Total Time</span> {{Recipe.prep_time_min + Recipe.cook_time_min}} Min</div>
                                                         <div class="gdlr-single-menu-time-inner">
                                                             <div class="menu-info menu-prep-time"><span class="gdlr-head">Prep</span>{{Recipe.prep_time_min}} min</div>
                                                             <div class="menu-info menu-cook-time"><span class="gdlr-head">Cook</span>{{Recipe.cook_time_min}} min</div>
@@ -92,7 +92,8 @@
                                                 <div class="gdlr-menu-ingredients-content">
                                                     <table>
                                                     <tr *ngFor="let ing of ingredients">
-                                                          <td>{{ing}}</td>
+                                                          <td *ngIf=exist(ing) style="background-color: #41d67d">{{ing}}</td>
+                                                          <td *ngIf=!exist(ing)>{{ing}}</td>
                                                       </tr>
                                                   </table>
                                                 </div>

@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {NgbCarousel, NgbSlideEvent, NgbSlideEventSource} from '@ng-bootstrap/ng-bootstrap';
-
+import {Router} from "@angular/router";
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +9,7 @@ import {NgbCarousel, NgbSlideEvent, NgbSlideEventSource} from '@ng-bootstrap/ng-
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  constructor(public router: Router, public location: Location) { }
    images = [
     { path: "assets/imgs/Home1.jpg" },
     { path: "assets/imgs/Home4.jpg" },
